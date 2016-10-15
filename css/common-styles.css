@@ -1,3 +1,7 @@
+#page-wrapper {
+    /*min-height: 1000px;*/
+}
+
 .equal-margin-top-bottom {
     margin-bottom: 20px;
     margin-top: 20px;
@@ -8,3 +12,45 @@
     font-weight: 300;
     font-style: italic;
 }
+
+.master-pane,
+.details-pane {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.master-pane {
+    border: 1px solid #777;
+    border-radius: 8px 0 0 8px;
+    overflow-y: scroll;
+    height:600px;
+}
+
+.details-pane {
+    border: 1px solid #777;
+    border-radius: 0 8px 8px 0;
+    overflow-y: scroll;
+    height:600px;
+}
+
+.master-pane-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    border-bottom: 1px solid #777;
+    text-decoration: none;
+}
+
+a.master-pane-item:hover {
+    text-decoration: none;
+}
+
+.master-pane-item:hover {
+    background-color: #eeeeee;
+}
+
+.master-pane-item.active {
+
+}
+
+

@@ -54,7 +54,7 @@
                     <input type="password" class="form-control" id="password" placeholder="password">
                 </div>
 
-                <button type="button" class="btn btn-success">LOGIN</button>
+                <button type="button" class="btn btn-success" id="login-btn">LOGIN</button>
             </form>
         </div>
     </div>
@@ -72,6 +72,31 @@
 <script src="js/plugins/morris/raphael.min.js"></script>
 <script src="js/plugins/morris/morris.min.js"></script>
 <script src="js/plugins/morris/morris-data.js"></script>
+
+<script>
+    $('#login-btn').click(function () {
+        const login_url = "http://52.34.207.176/api/login";
+        const data = {
+            email: $('#email').val(),
+            password: $('#password').val()
+        };
+        console.log(data);
+        $.ajax({
+            type: "POST",
+            url: login_url,
+            data: data,
+            dataType: "json",
+            success: function (json) {
+                console.log(json);
+                window.location = "home.html";
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(xhr);
+                console.log(xhr.status + ": " + xhr.responseText);
+            }
+        });
+    });
+</script>
 
 </body>
 
