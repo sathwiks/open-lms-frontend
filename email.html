@@ -18,6 +18,7 @@
     <link href="css/sb-admin.css" rel="stylesheet">
 
     <link href="css/common-styles.css" rel="stylesheet">
+    <link href="css/email.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -201,7 +202,7 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <div class="row">
+            <div class="row" id="page-header">
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Email
@@ -218,17 +219,31 @@
             </div>
             <!-- /.row -->
 
-            <div class="row">
-                <div class="col-lg-12 rounded-row">
+            <div class="row" id="email-container">
+                <div class="col-lg-12">
                     <div class="col-lg-3 master-pane">
-                        <div class="master-pane-group">
-                            <a href="#" class="master-pane-item active">First item</a>
-                            <a href="#" class="master-pane-item">Second item</a>
-                            <a href="#" class="master-pane-item">Third item</a>
-                        </div>
+                        <ul class="master-pane-group" id="email-master-group">
+                        </ul>
                     </div>
                     <div class="col-lg-9 details-pane">
+                        <div class="details-pane-item">
+                            <div class="from-container col-lg-10">
+                                <h4 class="from">
+                                    Sathwik Singari
+                                </h4>
+                                <p class="email-addr">&lt;singarisathwik007@gmail.com&gt;</p>
+                            </div>
+                            <p class="time col-lg-2">
+                                20:31
+                            </p>
+                            <p class="subject col-lg-12">
+                                Email Subject
+                            </p>
 
+                            <p class="description col-lg-12">
+                                Email Description
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -248,6 +263,66 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+
+<script>
+    var emails = [];
+    $(document).ready(function () {
+        var w = $(window).height(); //Gives height of whole window
+        var navHeight = $('nav').height();
+        var headingHeght = $("#page-header").height();
+        $(".master-pane").height(w - (navHeight + headingHeght));
+        $(".details-pane").height(w - (navHeight + headingHeght));
+        // then set css heights based on window height
+        var emailMasterGroup = document.getElementById('email-master-group');
+        for (var i = 0; i < 12; i++) {
+            var email = {
+                id: i,
+                from: "Sathwik Singari",
+                email_addr: "singarisathwik007@gmail.com",
+                subject: "Hello - " + i,
+                description: "Just wanted to say hi - " + i,
+                time: "20:31"
+            };
+            emails.push(email);
+            emailMasterGroup.appendChild(getCreatedMailItem(email));
+        }
+        var firstItem = $('.master-pane-item:first');
+        firstItem.addClass('active');
+        firstItem.trigger('click');
+    });
+
+    function getCreatedMailItem(email) {
+        var listElement = document.createElement('li');
+        listElement.className += " master-pane-item";
+        listElement.setAttribute("email-id", email.id.toString());
+        var fromElement = document.createElement('h4');
+        fromElement.className += " from";
+        fromElement.innerHTML = email.from;
+        var subjectElement = document.createElement('p');
+        subjectElement.className += " subject";
+        subjectElement.innerHTML = email.subject;
+        var descriptionElement = document.createElement('p');
+        descriptionElement.className += " description";
+        descriptionElement.innerHTML = email.description;
+        listElement.appendChild(fromElement);
+        listElement.appendChild(subjectElement);
+        listElement.appendChild(descriptionElement);
+        listElement.addEventListener("click", emailClickListener, false);
+        return listElement;
+    }
+
+    function emailClickListener() {
+        $('.master-pane-item').removeClass('active');
+        $(this).addClass('active');
+        var email = emails[$(this).attr('email-id')];
+        $('.details-pane-item .from').html(email.from);
+        $('.details-pane-item .email-addr').html("&lt;"+email.email_addr+"&gt;");
+        $('.details-pane-item .time').html(email.time);
+        $('.details-pane-item .subject').html(email.subject);
+        $('.details-pane-item .description').html(email.description);
+    }
+
+</script>
 
 </body>
 

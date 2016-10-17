@@ -1,0 +1,27 @@
+.master-pane-item .from,
+.master-pane-item .subject,
+.details-pane-item .from,
+.details-pane-item .subject {
+    font-weight: 700;
+}
+
+.details-pane-item .from,
+.details-pane-item .email-addr {
+    display: inline-block;
+}
+
+.master-pane-item .from,
+.master-pane-item .subject,
+.master-pane-item .description {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+}
+
+.details-pane-item .email-addr {
+    font-size: 0.8em;
+}
+
+.details-pane-item .time {
+    text-align: end;
+}
