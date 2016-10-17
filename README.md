@@ -1,3 +1,3 @@
 # Open - LMS 
 
-## COMP520 - University of Sydney
+## COMP5620 - University of Sydney
