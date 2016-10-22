@@ -167,23 +167,6 @@
                     <li>
                         <a href="email.html"><i class="fa fa-fw fa-envelope"></i> Email </a>
                     </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Need Modify1 <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Need Modify11</a>
-                            </li>
-                            <li>
-                                <a href="#">Need Modify12</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="../needModify2.html"><i class="fa fa-fw fa-file"></i> Need Modify2 </a>
-                    </li>
-                    <li>
-                        <a href="../needModify3.html"><i class="fa fa-fw fa-dashboard"></i> Need Modify3 </a>
-                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -216,7 +199,7 @@
                         <h4 class="panel-title">
                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                                aria-expanded="true" aria-controls="collapseOne">
-                                Course Outline
+                                Outline
                             </a>
                         </h4>
                     </div>
@@ -228,7 +211,7 @@
                         <h4 class="panel-title">
                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                                aria-expanded="true" aria-controls="collapseOne">
-                                Coordinator <span class="small-text"></span>
+                                Teacher <span class="small-text"></span>
                             </a>
                         </h4>
                     </div>
@@ -240,7 +223,7 @@
                         <h4 class="panel-title">
                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                                aria-expanded="true" aria-controls="collapseOne">
-                                Course Slides
+                                Materials
                             </a>
                         </h4>
                     </div>
@@ -282,6 +265,9 @@
 
     <script>
     $(document).ready(function(){
+      $.get("http://52.34.207.176/api/show_uos?uosId=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MDg2NDE1NDIsInN1YiI6NCwiaXNzIjoiaHR0cDpcL1wvNTIuMzQuMjA3LjE3NlwvYXBpXC9sb2dpbiIsImlhdCI6MTQ3NzEwNTU0MywibmJmIjoxNDc3MTA1NTQzLCJqdGkiOiI3NDUzZGRiZDEzODcwNjJlZmExNjM2M2I3N2U4N2E2NiJ9._uC3X7j_GtcRF5usd6wT_nuR4Nuh3fXnNyFC6vGZlPs",function(data,status){
+        console.table(data);
+      });
       var uosDetail = {"outline":"Model-Based Software Engineering focuses on modern software engineering methods, technologies, and processes used in professional development projects. It covers both the pragmatic engineering elements and the underlying theory of the model-based approach to the analysis, design, implementation, and maintenance of complex software-intensive systems.Students will participate in a group project, which will entail developing and/or evolving a software system, following a full development cycle from requirements specification through to implementation and testing using up-to-date industrial development tools and processes. At the end of the course they will provide a presentation and demonstration of their project work to the class. There is no formal teaching of a programming language in this unit, although students will be expected to demonstrate through their project work their general software engineering and architectural skills as well as their mastery of model-based methods and technologies.Students successfully completing this unit will have a strong practical and theoretical understanding of the modern software development cycle as applied in industrial settings. In particular, they will be familiar with the latest model-based software engineering approaches necessary for successfully dealing with today’s highly complex and challenging software systems.The pedagogic grounds for this course and its focus on model-based approaches are to arm new software engineers with skills and perspectives that extend beyond the level of basic programming. Such skills are essential to success in software development nowadays, and are in great demand but very low supply. The dearth of such expertise is one of the key reasons behind the alarmingly high failure rate of industrial software projects (currently estimated at being greater than 40%). Therefore, this unit complements SQE and strengthens a key area in the program.","coordinator":{"name":"Yuan Dong","Email":"Dong.yuan@sydney.edu.au","Addr":"Rm 550B J03 Building"},"slides":[{"name":"wk1","addr":"qwer"}],"assignment":[{"name":"assign1","content":"asdf"}]};
       var outlineAnchor = $("#outline");
       var coordinatorAnchor = $("#coordinator");
