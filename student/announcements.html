@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Announcements - Open Annoncements</title>
+    <title>Announcements - Open Announcement</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -136,7 +136,8 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span
+                        id="login-name"></span> <b
                         class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
@@ -159,7 +160,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Home </a>
+                    <a href="index.html"><i class="fa fa-fw fa-home"></i> Home </a>
                 </li>
                 <li class="active">
                     <a href="announcements.html"><i class="fa fa-fw fa-bullhorn" aria-hidden="true"></i> Announcements
@@ -175,25 +176,10 @@
                     <a href="notification.html"><i class="fa fa-fw fa-desktop"></i> Notification </a>
                 </li>
                 <li>
+                    <a href="discussions.html"><i class="fa fa-fw fa-group" aria-hidden="true"></i> Discussions </a>
+                </li>
+                <li>
                     <a href="email.html"><i class="fa fa-fw fa-envelope"></i> Email </a>
-                </li>
-                <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i
-                            class="fa fa-fw fa-arrows-v"></i> Need Modify1 <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo" class="collapse">
-                        <li>
-                            <a href="#">Need Modify11</a>
-                        </li>
-                        <li>
-                            <a href="#">Need Modify12</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="../needModify2.html"><i class="fa fa-fw fa-file"></i> Need Modify2 </a>
-                </li>
-                <li>
-                    <a href="../needModify3.html"><i class="fa fa-fw fa-dashboard"></i> Need Modify3 </a>
                 </li>
             </ul>
         </div>
@@ -201,138 +187,77 @@
     </nav>
 
     <div id="page-wrapper">
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    Announcements
-                </h1>
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="fa fa-dashboard"></i> <a href="index.html">Home</a>
-                    </li>
-                    <li class="active">
-                        <i class="fa fa-bullhorn" aria-hidden="true"></i></i> Announcements
-                    </li>
-                </ol>
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Announcements
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i> <a href="index.html">Home</a>
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-bullhorn" aria-hidden="true"></i></i> Announcements
+                        </li>
+                    </ol>
+                </div>
             </div>
-        </div>
-        <!-- /.row -->
+            <!-- /.row -->
 
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                           aria-expanded="true" aria-controls="collapseOne">
-                            Tutorial on 18/11 at 3:00pm <span class="small-text">Dr. John Doe - COMP5620 - 20/10/2016 at 8:33pm</span>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                Tutorial on 18/11 at 3:00pm <span class="small-text">Dr. John Doe - COMP5620 - 20/10/2016 at 8:33pm</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                         aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid.
+                            3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+                            laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+                            coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
+                            anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                            heard
+                            of them accusamus labore sustainable VHS.
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Readings for Week 2 <span
-                                class="small-text">Dr. John Doe - COMP5620 - 20/10/2016 at 8:51pm</span>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Readings for Week 2 <span
+                                    class="small-text">Dr. John Doe - COMP5620 - 20/10/2016 at 8:51pm</span>
+                            </a>
+                        </h4>
                     </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            No class on 4/11<span
-                                class="small-text">Dr. John Doe - COMP5620 - 20/10/2016 at 8:33pm</span>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid.
+                            3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+                            laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+                            coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
+                            anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                            heard
+                            of them accusamus labore sustainable VHS.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="modal fade" tabindex="-1" role="dialog" id="new-announcement-modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">New Announcement</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="announcement-title">Title</label>
-                            <input type="text" class="form-control" id="announcement-title">
-                        </div>
-                        <div class="form-group">
-                            <label for="announcement-message">Message</label>
-                            <textarea class="form-control" id="announcement-message" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="uos-dropdown">Unit of Study</label>
-                            <div class="dropdown" id="uos-dropdown">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="uos-available" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Dropdown
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="uos-available">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-
 </div>
 <!-- /#wrapper -->
 
@@ -360,6 +285,9 @@
 <script src="../js/plugins/flot/jquery.flot.pie.js"></script>
 <script src="../js/plugins/flot/flot-data.js"></script>
 
+
+<script src="../js/cookie_mgmt.js"></script>
+<script src="../js/account_mgmt.js"></script>
 </body>
 
 </html>
