@@ -9,19 +9,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Email - Open Email</title>
+    <title>Announcements - Open Annoncements</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="../css/sb-admin.css" rel="stylesheet">
 
-    <link href="css/common-styles.css" rel="stylesheet">
-    <link href="css/email.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="../css/plugins/morris.css" rel="stylesheet">
+
+    <link href="../css/common-styles.css" rel="stylesheet">
+    <link href="../css/announcement.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -158,7 +161,7 @@
                 <li>
                     <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Home </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="announcements.html"><i class="fa fa-fw fa-bullhorn" aria-hidden="true"></i> Announcements
                     </a>
                 </li>
@@ -171,8 +174,8 @@
                 <li>
                     <a href="notification.html"><i class="fa fa-fw fa-desktop"></i> Notification </a>
                 </li>
-                <li class="active">
-                    <a href="email.html"><i class="fa fa-envelope" aria-hidden="true"></i> Email </a>
+                <li>
+                    <a href="email.html"><i class="fa fa-fw fa-envelope"></i> Email </a>
                 </li>
                 <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i
@@ -187,10 +190,10 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="needModify2.html"><i class="fa fa-fw fa-file"></i> Need Modify2 </a>
+                    <a href="../needModify2.html"><i class="fa fa-fw fa-file"></i> Need Modify2 </a>
                 </li>
                 <li>
-                    <a href="needModify3.html"><i class="fa fa-fw fa-dashboard"></i> Need Modify3 </a>
+                    <a href="../needModify3.html"><i class="fa fa-fw fa-dashboard"></i> Need Modify3 </a>
                 </li>
             </ul>
         </div>
@@ -198,134 +201,115 @@
     </nav>
 
     <div id="page-wrapper">
-
-        <div class="container-fluid">
-
-            <!-- Page Heading -->
-            <div class="row" id="page-header">
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Email
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="fa fa-dashboard"></i> <a href="index.html">Home</a>
-                        </li>
-                        <li class="active">
-                            <i class="fa fa-envelope"></i> Email
-                        </li>
-                    </ol>
-                </div>
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Announcements
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i> <a href="index.html">Home</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-bullhorn" aria-hidden="true"></i></i> Announcements
+                    </li>
+                </ol>
             </div>
-            <!-- /.row -->
-
-            <div class="row" id="email-container">
-                <div class="col-lg-12">
-                    <div class="col-lg-3 master-pane">
-                        <div class="master-pane-tabs">
-
-                        </div>
-                        <ul class="master-pane-group" id="email-master-group">
-                        </ul>
-                    </div>
-                    <div class="col-lg-9 details-pane">
-                        <div class="details-pane-item">
-                            <div class="from-container col-lg-10">
-                                <h4 class="from">
-                                    Sathwik Singari
-                                </h4>
-                                <p class="email-addr">&lt;singarisathwik007@gmail.com&gt;</p>
-                            </div>
-                            <p class="time col-lg-2">
-                                20:31
-                            </p>
-                            <p class="subject col-lg-12">
-                                Email Subject
-                            </p>
-
-                            <p class="description col-lg-12">
-                                Email Description
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /.row -->
-
         </div>
-        <!-- /.container-fluid -->
+        <!-- /.row -->
 
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                           aria-expanded="true" aria-controls="collapseOne">
+                            Tutorial on 18/11 at 3:00pm <span class="small-text">Dr. John Doe - COMP5620 - 20/10/2016 at 8:33pm</span>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
+                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
+                        of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Readings for Week 2 <span
+                                class="small-text">Dr. John Doe - COMP5620 - 20/10/2016 at 8:51pm</span>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
+                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
+                        of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            No class on 4/11<span
+                                class="small-text">Dr. John Doe - COMP5620 - 20/10/2016 at 8:33pm</span>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
+                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
+                        of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
+<script src="../js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
-<script>
-    var emails = [];
-    $(document).ready(function () {
-        var w = $(window).height(); //Gives height of whole window
-        var navHeight = $('nav').height();
-        var headingHeght = $("#page-header").height();
-        $(".master-pane").height(w - (navHeight + headingHeght));
-        $(".details-pane").height(w - (navHeight + headingHeght));
-        // then set css heights based on window height
-        var emailMasterGroup = document.getElementById('email-master-group');
-        for (var i = 0; i < 12; i++) {
-            var email = {
-                id: i,
-                from: "Sathwik Singari",
-                email_addr: "singarisathwik007@gmail.com",
-                subject: "Hello - " + i,
-                description: "Just wanted to say hi - " + i,
-                time: "20:31"
-            };
-            emails.push(email);
-            emailMasterGroup.appendChild(getCreatedMailItem(email));
-        }
-        var firstItem = $('.master-pane-item:first');
-        firstItem.addClass('active');
-        firstItem.trigger('click');
-    });
+<!-- Morris Charts JavaScript -->
+<script src="../js/plugins/morris/raphael.min.js"></script>
+<script src="../js/plugins/morris/morris.min.js"></script>
+<script src="../js/plugins/morris/morris-data.js"></script>
 
-    function getCreatedMailItem(email) {
-        var listElement = document.createElement('li');
-        listElement.className += " master-pane-item";
-        listElement.setAttribute("email-id", email.id.toString());
-        var fromElement = document.createElement('h4');
-        fromElement.className += " from";
-        fromElement.innerHTML = email.from;
-        var subjectElement = document.createElement('p');
-        subjectElement.className += " subject";
-        subjectElement.innerHTML = email.subject;
-        var descriptionElement = document.createElement('p');
-        descriptionElement.className += " description";
-        descriptionElement.innerHTML = email.description;
-        listElement.appendChild(fromElement);
-        listElement.appendChild(subjectElement);
-        listElement.appendChild(descriptionElement);
-        listElement.addEventListener("click", emailClickListener, false);
-        return listElement;
-    }
-
-    function emailClickListener() {
-        $('.master-pane-item').removeClass('active');
-        $(this).addClass('active');
-        var email = emails[$(this).attr('email-id')];
-        $('.details-pane-item .from').html(email.from);
-        $('.details-pane-item .email-addr').html("&lt;"+email.email_addr+"&gt;");
-        $('.details-pane-item .time').html(email.time);
-        $('.details-pane-item .subject').html(email.subject);
-        $('.details-pane-item .description').html(email.description);
-    }
-
-</script>
+<!-- Flot Charts JavaScript -->
+<!--[if lte IE 8]>
+<script src="js/excanvas.min.js"></script><![endif]-->
+<script src="../js/plugins/flot/jquery.flot.js"></script>
+<script src="../js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="../js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="../js/plugins/flot/jquery.flot.pie.js"></script>
+<script src="../js/plugins/flot/flot-data.js"></script>
 
 </body>
 
