@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>UoS - Open UoS</title>
+    <title>UoS - Open LMS</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -251,7 +251,7 @@
         var cookie = read_cookie("user");
         console.log(cookie["token"]);
 
-        $.get("http://52.34.207.176/api/list_uos?token="+cookie["token"],function(data,status){
+        $.get("http://52.34.207.176/api/list_users_uos?token="+cookie["token"],function(data,status){
             courseList = data["data"];
             courseList.forEach(function(course){
               listMasterGroup.append(getCreatedCourses(course));
@@ -265,7 +265,7 @@
       var trElement = document.createElement('tr');
       var aElement = document.createElement('a');
       aElement.innerHTML = course.code + " " + course.title;
-      aElement.setAttribute("href","unitOfStudyDetail.html"+"?"+"uosId="+course.id);
+      aElement.setAttribute("href","unitOfStudyDetail.html"+"?"+"uosId="+course.uos_id);
       var nameElement = document.createElement('td');
       nameElement.appendChild(aElement);
       var coordinateElement = document.createElement('td');

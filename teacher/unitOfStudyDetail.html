@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Open UoS-Detail</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/sb-admin.css" rel="stylesheet">
+
+    <link href="../css/common-styles.css" rel="stylesheet">
+    <link href="../css/uos_details.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+
+    <div w3-include-html="navigation.html"></div>
+
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <div id="content">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Unit of Study
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-table"></i> UoS
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading1">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                Outline
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="outline" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading2">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                Teacher <span class="small-text"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="coordinator" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2">
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading3">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                Materials
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="materials" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading3">
+
+                    </div>
+
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading4">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                Assignment
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="assignment" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading4">
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#new-assignment-modal"><i
+                                class="fa fa-plus" aria-hidden="true"></i> New Assignment</a>
+                        <ul id="assignment-items" class="list-group">
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /.row -->
+            </div>
+
+            <div id="loading">
+                <img src="../images/loading.gif">
+            </div>
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="new-assignment-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">New assignment</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger" role="alert" id="errors-container"></div>
+                    <div class="alert alert-success" role="alert" id="success-container"></div>
+                    <form>
+                        <div class="form-group">
+                            <label for="assignment-title">Title</label>
+                            <input type="text" class="form-control" id="assignment-title">
+                        </div>
+                        <div class="form-group">
+                            <label for="assignment-description">description</label>
+                            <textarea class="form-control" id="assignment-description" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignment-marks">Max. Marks</label>
+                            <input type="text" class="form-control" id="assignment-marks">
+                        </div>
+                        <div class="form-group">
+                            <label id="browse-btn" class="btn btn-default btn-primary">
+                                Browse <input id="file-sel" type="file" style="display: none;">
+                            </label>
+                            <label id="file-name"></label>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignment-due-date">Due Date</label>
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" id="assignment-due-date"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="send-assignment">Send</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</div>
+<!-- /#wrapper -->
+
+<script>
+    w3IncludeHTML();
+</script>
+
+<!-- jQuery -->
+<script src="../js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/moment.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-datetime-picker.js"></script>
+
+<script src="../js/cookie_mgmt.js"></script>
+<script src="../js/account_mgmt.js"></script>
+
+<script>
+    $('#content').hide();
+    var errors_container;
+    var success_container;
+    $(document).ready(function () {
+        errors_container = $('#errors-container');
+        errors_container.hide();
+        success_container = $('#success-container');
+        success_container.hide();
+        $('#datetimepicker1').datetimepicker({
+                    format: 'YYYY-MM-DD HH:mm:ss'
+                }
+        );
+        var cookie = read_cookie("user");
+        var uosId = location.search.substr(1).split("=")[1];
+
+        $.get("http://52.34.207.176/api/show_uos?uosId=" + uosId + "&token=" + cookie["token"], function (data, status) {
+            var uosDetail = data["data"][0];
+            var outlineAnchor = $("#outline");
+            var coordinatorAnchor = $("#coordinator");
+            var materialAnchor = $("#materials");
+            outlineAnchor.append(createOutline(uosDetail));
+            coordinatorAnchor.append(createCoordinator(uosDetail));
+            materialAnchor.append(creatematerials(uosDetail));
+            createAssignment(uosDetail);
+            $('#loading').hide();
+            $('#content').show();
+            $('#file-sel').change(function () {
+                $('#file-name').html($('#file-sel')[0].files[0].name);
+            });
+            $('#send-assignment').click(uploadAssignment);
+        });
+
+
+    });
+
+    function createOutline(uosDetail) {
+        var outline = $("<div></div>");
+        outline.addClass("panel-body");
+        outline.html(uosDetail["desc"]);
+        return outline;
+    }
+
+    function createCoordinator(uosDetail) {
+        var coordinator = $("<div></div>");
+        coordinator.addClass("panel-body");
+        var name = $("<p></p>");
+        name.html(uosDetail["teacher_fname"] + uosDetail["teacher_lname"]);
+        var email = $("<p></p>");
+        email.html(uosDetail["teacher_email"]);
+        coordinator.append(name);
+        coordinator.append(email);
+
+        return coordinator;
+    }
+
+    function creatematerials(uosDetail) {
+        var materials = $("<div></div>");
+
+
+        uosDetail["course_materials"].forEach(function (material) {
+            var materialItem = $("<div></div>");
+            materialItem.addClass("panel-body");
+            materialItem.html(material["name"]);
+            materials.append(materialItem);
+        });
+        return materials;
+    }
+
+    function createAssignment(uosDetail) {
+        var assignmentsAnchor = $("#assignment-items");
+
+        uosDetail["assignments"].forEach(function (assignment) {
+            createAssignmentItem(assignment, assignmentsAnchor);
+        });
+    }
+
+    function createAssignmentItem(assignment, assignmentsAnchor){
+        var assignmentItem = $("<li></li>");
+        assignmentItem.addClass("list-group-item");
+        const item = "<span class='strong'>"+assignment.name+"</span></br>" +
+                assignment.description + "</br>" +
+                assignment.due_date+ "</br>" +
+                "<a href='"+assignment.resource_url+"'>Attachment</a> </br>"+
+                "<label>Max Marks: </label>" + assignment.max_marks;
+        assignmentItem.html(item);
+        assignmentsAnchor.append(assignmentItem);
+    }
+
+    function uploadAssignment() {
+        $('#send-assignment').prop('disabled', true);
+        const store_assn_url = "http://52.34.207.176/api/store_assignment?token=" + user['token'];
+        var fd = new FormData();
+        fd.append('name', $('#assignment-title').val());
+        fd.append('description', $('#assignment-description').val());
+        fd.append('max_marks', $('#assignment-marks').val());
+        fd.append('due_date', $('#assignment-due-date').val());
+        fd.append('uos_id', getParameterByName('uosId'));
+        fd.append('image', $('#file-sel')[0].files[0]);
+        $.ajax({
+            type: 'POST',
+            url: store_assn_url,
+            data: fd,
+            contentType: false,
+            processData: false,
+            cache: false,
+            dataType: 'json',
+            success: function (json) {
+                console.log(json);
+                createAssignmentItem(json.data[0], $("#assignment-items"));
+                $('#send-assignment').prop('disabled', false);
+                $('#new-assignment-modal').modal('toggle');
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+                $('#send-assignment').prop('disabled', false);
+            }
+        });
+    }
+
+    function getParameterByName(name, url) {
+        if (!url) {
+            url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+</script>
+
+
+</body>
+
+</html>
