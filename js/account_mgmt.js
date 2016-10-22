@@ -1,3 +1,8 @@
+var user = read_cookie("user");
+if (!user && window.location.pathname != "/open-lms-frontend/login.html") {
+    window.location = "../login.html";
+}
+
 function login(email, password , callback) {
     const login_url = "http://52.34.207.176/api/login";
     if (email === "" || password === "" ) {
@@ -40,5 +45,5 @@ function logout() {
 }
 
 $( document ).ready(function() {
-    $('#logout').click(logout);
+    $('#logout-btn').click(logout);
 });
