@@ -1,5 +1,6 @@
 var user = read_cookie("user");
-if (!user && window.location.pathname != "/open-lms-frontend/login.html") {
+var path = window.location.pathname;
+if (user == null && !path.includes("login.html")) {
     window.location = "../login.html";
 }
 
