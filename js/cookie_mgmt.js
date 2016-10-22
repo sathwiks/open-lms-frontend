@@ -12,3 +12,8 @@ function read_cookie(name) {
 function delete_cookie(name) {
     document.cookie = [name, '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/;'].join('');
 }
+
+function get_my_uos() {
+    const resp = read_cookie("uos");
+    return resp.data;
+}

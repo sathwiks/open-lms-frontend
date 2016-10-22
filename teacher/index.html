@@ -16,6 +16,8 @@
 
     <!-- Custom CSS -->
     <link href="../css/sb-admin.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../css/common-styles.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="../css/plugins/morris.css" rel="stylesheet">
@@ -214,6 +216,20 @@
 
 <script src="../js/cookie_mgmt.js"></script>
 <script src="../js/account_mgmt.js"></script>
+<script>
+    const list_user_uos_url = "http://52.34.207.176/api/list_users_uos?token="+user['token'];
+    $.ajax({
+        url: list_user_uos_url,
+        type: 'GET',
+        dataType: "json",
+        success: function (response) {
+            bake_cookie("uos", response);
+        },
+        error: function (xhr, errmsg, err) {
+            console.log(xhr.status + ": " + xhr.responseText);
+        }
+    });
+</script>
 
 </body>
 
