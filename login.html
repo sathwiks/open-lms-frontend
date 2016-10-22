@@ -44,6 +44,7 @@
     <div class="row">
         <div id="login-container" class="col-lg-4 col-lg-offset-4">
             <h1 class="equal-margin-top-bottom">Open - LMS</h1>
+            <div class="alert alert-danger" role="alert" id="errors-container"></div>
             <form role="form">
                 <div id="email-group" class="input-group">
                     <div class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
@@ -68,31 +69,27 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 
-<!-- Morris Charts JavaScript -->
-<script src="js/plugins/morris/raphael.min.js"></script>
-<script src="js/plugins/morris/morris.min.js"></script>
-<script src="js/plugins/morris/morris-data.js"></script>
+<script src="js/cookie_mgmt.js"></script>
+<script src="js/account_mgmt.js"></script>
 
 <script>
+    var errors_container = $('#errors-container');
+    errors_container.hide();
     $('#login-btn').click(function () {
-        const login_url = "http://52.34.207.176/api/login";
-        const data = {
-            email: $('#email').val(),
-            password: $('#password').val()
-        };
-        console.log(data);
-        $.ajax({
-            type: "POST",
-            url: login_url,
-            data: data,
-            dataType: "json",
-            success: function (json) {
-                console.log(json);
-                window.location = "student/index.html";
-            },
-            error: function (xhr, errmsg, err) {
-                console.log(xhr);
-                console.log(xhr.status + ": " + xhr.responseText);
+        $(this).prop("disabled", true);
+        const email = $('#email').val();
+        const password = $('#password').val();
+        login(email, password, function (response) {
+            if (response['message'] == "success") {
+                const user = response['user'];
+                if (user.role_id == 1) {
+                    window.location = "student/index.html";
+                } else if (user.role_id == 2) {
+                    window.location = "teacher/index.html";
+                }
+            } else {
+                errors_container.html(response.message);
+                errors_container.show();
             }
         });
     });
