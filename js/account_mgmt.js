@@ -1,4 +1,5 @@
 var user = read_cookie("user");
+
 var path = window.location.pathname;
 if (user == null && !path.includes("login.html")) {
     window.location = "../login.html";
@@ -45,6 +46,13 @@ function logout() {
     window.location = "../login.html";
 }
 
+function getLoginName(){
+    var nameTagStr = read_cookie("user")["lname"]+" "+ read_cookie("user")["fname"];
+    return nameTagStr;
+}
+
 $( document ).ready(function() {
     $('#logout-btn').click(logout);
+
+    $('#login-name').html(getLoginName());
 });

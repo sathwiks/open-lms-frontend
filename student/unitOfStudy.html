@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Open UoS</title>
+    <title>UoS - Open UoS</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading"><strong></strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -128,7 +128,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span id ="login-name"><span><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -141,32 +141,35 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="#" id="logout-btn"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li >
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Home </a>
-                    </li>
-                    <li>
-                        <a href="announcements.html"><i class="fa fa-fw fa-bullhorn"></i> Announcements </a>
-                    </li>
-                    <li class="active">
-                        <a href="unitOfStudy.html"><i class="fa fa-fw fa-book"></i> UoS </a>
-                    </li>
-                    <li>
-                        <a href="myGrades.html"><i class="fa fa-fw fa-edit"></i> My Grades </a>
-                    </li>
-                    <li>
-                        <a href="notification.html"><i class="fa fa-fw fa-desktop"></i> Notification </a>
-                    </li>
-                    <li>
-                        <a href="email.html"><i class="fa fa-fw fa-envelope"></i> Email </a>
-                    </li>
+              <ul class="nav navbar-nav side-nav">
+                  <li>
+                      <a href="index.html"><i class="fa fa-fw fa-home"></i> Home </a>
+                  </li>
+                  <li>
+                      <a href="announcements.html"><i class="fa fa-fw fa-bullhorn" aria-hidden="true"></i> Announcements </a>
+                  </li>
+                  <li class="active">
+                      <a href="unitOfStudy.html"><i class="fa fa-fw fa-book"></i> UoS </a>
+                  </li>
+                  <li>
+                      <a href="myGrades.html"><i class="fa fa-fw fa-edit"></i> My Grades </a>
+                  </li>
+                  <li>
+                      <a href="notification.html"><i class="fa fa-fw fa-desktop"></i> Notification </a>
+                  </li>
+                  <li>
+                      <a href="discussions.html"><i class="fa fa-fw fa-group" aria-hidden="true"></i> Discussions </a>
+                  </li>
+                  <li>
+                      <a href="email.html"><i class="fa fa-fw fa-envelope"></i> Email </a>
+                  </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -184,7 +187,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                                <i class="fa fa-home"></i>  <a href="index.html">Home</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-book"></i> UoS
@@ -230,6 +233,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/cookie_mgmt.js"></script>
+    <script src="../js/account_mgmt.js"></script>
 
     <script>
     $(document).ready(function () {
@@ -242,10 +247,12 @@
         //   {"name":"INFO5990 Professional Practice in IT (Normal (lecture/lab/tutorial) evening)","coordinator":"Khimji Vaghjiani;  Katie Yang; "},
         //   {"name":"INFO5992 Understanding IT Innovations","coordinator":"Jinman Kim;  Katie Yang; "}];
         var courseList;
-        $.get("http://52.34.207.176/api/list_uos?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MDg2NDE1NDIsInN1YiI6NCwiaXNzIjoiaHR0cDpcL1wvNTIuMzQuMjA3LjE3NlwvYXBpXC9sb2dpbiIsImlhdCI6MTQ3NzEwNTU0MywibmJmIjoxNDc3MTA1NTQzLCJqdGkiOiI3NDUzZGRiZDEzODcwNjJlZmExNjM2M2I3N2U4N2E2NiJ9._uC3X7j_GtcRF5usd6wT_nuR4Nuh3fXnNyFC6vGZlPs",function(data,status){
-            console.log(data+":"+status);
+
+        var cookie = read_cookie("user");
+        console.log(cookie["token"]);
+
+        $.get("http://52.34.207.176/api/list_uos?token="+cookie["token"],function(data,status){
             courseList = data["data"];
-            console.table(courseList);
             courseList.forEach(function(course){
               listMasterGroup.append(getCreatedCourses(course));
             });
