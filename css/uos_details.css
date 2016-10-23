@@ -1,4 +1,4 @@
-#assignment > a.btn {
+.btn.new-item {
     margin: 10px;
 }
 
@@ -6,7 +6,7 @@
     margin: 0 0 10px 0;
 }
 
-#delete-btn {
+.delete-btn {
     position: absolute;
     top: 10px;
     right: 10px;

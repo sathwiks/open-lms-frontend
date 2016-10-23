@@ -66,8 +66,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="heading1">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                               aria-expanded="true" aria-controls="collapseOne">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#outline"
+                               aria-expanded="true" aria-controls="outline">
                                 Outline
                             </a>
                         </h4>
@@ -78,8 +78,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="heading2">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                               aria-expanded="true" aria-controls="collapseOne">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#coordinator"
+                               aria-expanded="true" aria-controls="coordinator">
                                 Teacher <span class="small-text"></span>
                             </a>
                         </h4>
@@ -90,8 +90,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="heading3">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                               aria-expanded="true" aria-controls="collapseOne">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#materials"
+                               aria-expanded="true" aria-controls="materials">
                                 Materials
                             </a>
                         </h4>
@@ -104,17 +104,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="heading4">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                               aria-expanded="true" aria-controls="collapseOne">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#assignment"
+                               aria-expanded="true" aria-controls="assignment">
                                 Assignment
                             </a>
                         </h4>
                     </div>
                     <div id="assignment" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading4">
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#new-assignment-modal"><i
-                                class="fa fa-plus" aria-hidden="true"></i> New Assignment</a>
-                        <ul id="assignment-items" class="list-group">
-                        </ul>
+
                     </div>
 
                 </div>
@@ -142,8 +139,7 @@
                     <h4 class="modal-title">New assignment</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="alert alert-danger" role="alert" id="errors-container"></div>
-                    <div class="alert alert-success" role="alert" id="success-container"></div>
+                    <div class="alert alert-danger errors-container" role="alert"></div>
                     <form>
                         <div class="form-group">
                             <label for="assignment-title">Title</label>
@@ -204,7 +200,69 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id="delete-assignment">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="delete-assignment">Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+
+    <!-- New assignment Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="new-material-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">New assignment</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger errors-container" role="alert"></div>
+                    <form>
+                        <div class="form-group">
+                            <label for="assignment-title">Title</label>
+                            <input type="text" class="form-control" id="material-title">
+                        </div>
+                        <div class="form-group">
+                            <label id="browse-mat-btn" class="btn btn-default btn-primary">
+                                Browse <input id="file-mat-sel" type="file" style="display: none;">
+                            </label>
+                            <label id="file-mat-name"></label>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignment-pub-date">Active Date</label>
+                            <div class='input-group date' id='datetimepicker2'>
+                                <input type='text' class="form-control" id="material-pub-date"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="send-material">Send</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Delete material Modal -->
+    <div class="modal fade" id="delete-material-modal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this <span class="strong" id="mat-name"></span>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="delete-material">Yes
+                    </button>
                 </div>
             </div>
         </div>
@@ -235,14 +293,35 @@
 <script type="text/jsx">
 
     var selectedAssignment;
+    var selectedMaterial;
+    var assignmentsReact;
+    var materialsReact;
+    var assignments;
+    var materials;
 
     var Assignments = React.createClass({
+
+        getInitialState: function () {
+            return {
+                assignments: [],
+            };
+        },
+
+        updateAssignment(assignments) {
+            this.setState({
+                assignments: assignments,
+            })
+        },
+
         render: function () {
-            var assignment_items = this.props.assignments.map(function (assignment) {
+            var assignment_items = this.state.assignments.map(function (assignment, i) {
                 return <AssignmentItem key={assignment.id} assignment={assignment}/>
             });
             return (
                     <ul id="assignment-items" className="list-group">
+                        <li className="list-group-item"><a className="btn btn-primary new-item" data-toggle="modal"
+                                                           data-target="#new-assignment-modal"><i
+                                className="fa fa-plus" aria-hidden="true"></i> New Assignment</a></li>
                         {assignment_items}
                     </ul>
             );
@@ -251,29 +330,74 @@
 
     var AssignmentItem = React.createClass({
 
-        openModal: function (id) {
-            selectedAssignment = id;
-        },
-
-        deleteAssignment: function (id, name) {
-            selectedAssignment = id;
-            $('#ass-name').html(name);
+        deleteAssignment: function (assignment) {
+            selectedAssignment = assignment;
+            $('#ass-name').html(assignment.name);
             $('#delete-modal').modal('toggle');
         },
 
         render: function () {
             return (
-                    <li className="list-group-item" id={"ass-"+this.props.assignement.id}>
-                        <p className="strong">{this.props.assignment.name}</p>
+                    <li className="list-group-item" id={"ass-" + this.props.assignment.id}>
+                        <h4>{this.props.assignment.name}</h4>
                         <p className="description">{this.props.assignment.description}</p>
                         <p><span className="strong">Due:</span> {this.props.assignment.due_date}</p>
                         <p><span className="strong">Max Marks:</span> {this.props.assignment.max_marks}</p>
                         <p><a href={this.props.assignment.resource_url}>Attachment</a></p>
-                        <button className="btn btn-default"
-                                onClick={this.openModal.bind(this, this.props.assignment.id)}>Grade
+                        <button className="btn btn-default">View Solutions</button>
+                        <button className="btn btn-default btn-lg delete-btn"
+                                onClick={this.deleteAssignment.bind(this, this.props.assignment)}>
+                            <i className="fa fa-times" aria-hidden="true"></i>
                         </button>
-                        <button id="delete-btn" className="btn btn-default btn-lg"
-                                onClick={this.deleteAssignment.bind(this, this.props.assignment.id, this.props.assignment.name)}>
+                    </li>
+            );
+        }
+    });
+
+    var Materials = React.createClass({
+
+        getInitialState: function () {
+            return {
+                materials: [],
+            };
+        },
+
+        updateMaterials(materials) {
+            this.setState({
+                materials: materials,
+            })
+        },
+
+        render: function () {
+            var material_items = this.state.materials.map(function (material) {
+                return <MaterialItem key={material.id} material={material}/>
+            });
+            return (
+                    <ul id="material-items" className="list-group">
+                        <li className="list-group-item"><a className="btn btn-primary new-item" data-toggle="modal"
+                                                           data-target="#new-material-modal"><i
+                                className="fa fa-plus" aria-hidden="true"></i> New Material</a></li>
+                        {material_items}
+                    </ul>
+            );
+        }
+    });
+
+    var MaterialItem = React.createClass({
+
+        deleteMaterial: function (material) {
+            selectedMaterial = material;
+            $('#mat-name').html(material.name);
+            $('#delete-material-modal').modal('toggle');
+        },
+
+        render: function () {
+            return (
+                    <li className="list-group-item" id={"mat-" + this.props.material.id}>
+                        <h4>{this.props.material.name}</h4>
+                        <p><a href={this.props.material.resource_url}>Attachment</a></p>
+                        <button className="btn btn-default btn-lg delete-btn"
+                                onClick={this.deleteMaterial.bind(this, this.props.material)}>
                             <i className="fa fa-times" aria-hidden="true"></i>
                         </button>
                     </li>
@@ -283,12 +407,18 @@
 
     $('#content').hide();
     var errors_container;
-    var success_container;
     $(document).ready(function () {
-        errors_container = $('#errors-container');
+        errors_container = $('.errors-container');
         errors_container.hide();
-        success_container = $('#success-container');
-        success_container.hide();
+
+        getUosDetail();
+        setupDialogs();
+
+        assignmentsReact = ReactDOM.render(<Assignments />, document.getElementById('assignment'));
+        materialsReact = ReactDOM.render(<Materials />, document.getElementById('materials'));
+    });
+
+    function setupDialogs() {
         $('#datetimepicker').datetimepicker({
                     format: 'YYYY-MM-DD HH:mm:ss'
                 }
@@ -297,9 +427,25 @@
                     format: 'YYYY-MM-DD HH:mm:ss'
                 }
         );
+        $('#datetimepicker2').datetimepicker({
+                    format: 'YYYY-MM-DD HH:mm:ss'
+                }
+        );
+        $('#file-sel').change(function () {
+            $('#file-name').html($('#file-sel')[0].files[0].name);
+        });
+        $('#send-assignment').click(uploadAssignment);
+        $('#delete-assignment').click(deleteAssignment);
+        $('#file-mat-sel').change(function () {
+            $('#file-mat-name').html($('#file-mat-sel')[0].files[0].name);
+        });
+        $('#send-material').click(uploadMaterial);
+        $('#delete-material').click(deleteMaterial);
+    }
+
+    function getUosDetail() {
         var cookie = read_cookie("user");
         var uosId = location.search.substr(1).split("=")[1];
-
         $.get("http://52.34.207.176/api/show_uos?uosId=" + uosId + "&token=" + cookie["token"], function (data, status) {
             var uosDetail = data["data"][0];
             var outlineAnchor = $("#outline");
@@ -307,19 +453,12 @@
             var materialAnchor = $("#materials");
             outlineAnchor.append(createOutline(uosDetail));
             coordinatorAnchor.append(createCoordinator(uosDetail));
-            materialAnchor.append(creatematerials(uosDetail));
+            createMaterials(uosDetail);
             createAssignment(uosDetail);
             $('#loading').hide();
             $('#content').show();
         });
-
-        $('#file-sel').change(function () {
-            $('#file-name').html($('#file-sel')[0].files[0].name);
-        });
-        $('#send-assignment').click(uploadAssignment);
-        $('#delete-assignment').click(deleteAssignment);
-
-    });
+    }
 
     function createOutline(uosDetail) {
         var outline = $("<div></div>");
@@ -341,34 +480,24 @@
         return coordinator;
     }
 
-    function creatematerials(uosDetail) {
-        var materials = $("<div></div>");
+    function createMaterials(uosDetail) {
+        materials = uosDetail.course_materials;
+        materialsReact.updateMaterials(materials);
+    }
 
-
-        uosDetail["course_materials"].forEach(function (material) {
-            var materialItem = $("<div></div>");
-            materialItem.addClass("panel-body");
-            materialItem.html(material["name"]);
-            materials.append(materialItem);
-        });
-        return materials;
+    function createMaterialsItem(material) {
+        materials.push(material);
+        materialsReact.updateMaterials(materials);
     }
 
     function createAssignment(uosDetail) {
-        var assignments = uosDetail.assignments;
-        ReactDOM.render(<Assignments assignments={assignments}/>, document.getElementById('assignment'));
+        assignments = uosDetail.assignments;
+        assignmentsReact.updateAssignment(assignments);
     }
 
-    function createAssignmentItem(assignment, assignmentsAnchor) {
-        var assignmentItem = $("<li></li>");
-        assignmentItem.addClass("list-group-item");
-        const item = "<span class='strong'>" + assignment.name + "</span></br>" +
-                assignment.description + "</br>" +
-                assignment.due_date + "</br>" +
-                "<a href='" + assignment.resource_url + "'>Attachment</a> </br>" +
-                "<label>Max Marks:</label> " + assignment.max_marks;
-        assignmentItem.html(item);
-        assignmentsAnchor.append(assignmentItem);
+    function createAssignmentItem(assignment) {
+        assignments.push(assignment);
+        assignmentsReact.updateAssignment(assignments);
     }
 
     function uploadAssignment() {
@@ -391,10 +520,7 @@
             cache: false,
             dataType: 'json',
             success: function (json) {
-                console.log(json);
-                createAssignmentItem(json.data[0], $("#assignment-items"));
-                success_container.html("Assignment has been created");
-                success_container.show();
+                createAssignmentItem(json.data[0]);
                 $('#send-assignment').prop('disabled', false);
                 $('#new-assignment-modal').modal('toggle');
             },
@@ -404,7 +530,7 @@
                 var res = JSON.parse(xhr.responseText);
                 errors_container.html(res['error']);
                 errors_container.show();
-                $('#new-solution-modal').modal('toggle');
+                $('#new-assignment-modal').modal('toggle');
             }
         });
     }
@@ -413,7 +539,7 @@
         $('#delete-assignment').prop('disabled', true);
         const del_assn_url = "http://52.34.207.176/api/delete_assignment?token=" + user['token'];
         var fd = new FormData();
-        fd.append('assignment_id', selectedAssignment);
+        fd.append('assignment_id', selectedAssignment.id);
         $.ajax({
             type: 'POST',
             url: del_assn_url,
@@ -424,7 +550,8 @@
             dataType: 'json',
             success: function (json) {
                 console.log(json);
-                document.getElementById("ass-"+selectedAssignment).remove();
+                removeFromArray(assignments, selectedAssignment);
+                assignmentsReact.updateAssignment(assignments);
                 $('#delete-assignment').prop('disabled', false);
                 $('#delete-modal').modal('toggle');
             },
@@ -432,6 +559,67 @@
                 console.log(xhr.status + ": " + xhr.responseText);
                 $('#delete-assignment').prop('disabled', false);
                 $('#delete-modal').modal('toggle');
+            }
+        });
+    }
+
+    function uploadMaterial() {
+        $('#send-material').prop('disabled', true);
+        const store_mat_url = "http://52.34.207.176/api/store_course_materials?token=" + user['token'];
+        var fd = new FormData();
+        fd.append('name', $('#material-title').val());
+        fd.append('publish_date', $('#material-pub-date').val());
+        fd.append('uos_id', getParameterByName('uosId'));
+        fd.append('submission_file', $('#file-mat-sel')[0].files[0]);
+        $.ajax({
+            type: 'POST',
+            url: store_mat_url,
+            data: fd,
+            contentType: false,
+            processData: false,
+            cache: false,
+            dataType: 'json',
+            success: function (json) {
+                createMaterialsItem(json.data[0]);
+                $('#send-material').prop('disabled', false);
+                $('#new-material-modal').modal('toggle');
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+                $('#send-material').prop('disabled', false);
+                var res = JSON.parse(xhr.responseText);
+                errors_container.html(res['error']);
+                errors_container.show();
+                $('#new-material-modal').modal('toggle');
+            }
+        });
+    }
+
+    function deleteMaterial() {
+        $('#delete-material').prop('disabled', true);
+        const del_mat_url = "http://52.34.207.176/api/delete_course_materials?token=" + user['token'];
+        var fd = new FormData();
+        fd.append('cm_id', selectedMaterial.id);
+        console.log(selectedMaterial.id);
+        $.ajax({
+            type: 'POST',
+            url: del_mat_url,
+            data: fd,
+            contentType: false,
+            processData: false,
+            cache: false,
+            dataType: 'json',
+            success: function (json) {
+                console.log(json);
+                removeFromArray(materials, selectedMaterial);
+                materialsReact.updateMaterials(materials);
+                $('#delete-material').prop('disabled', false);
+                $('#delete-material-modal').modal('toggle');
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+                $('#delete-material').prop('disabled', false);
+                $('#delete-material-modal').modal('toggle');
             }
         });
     }

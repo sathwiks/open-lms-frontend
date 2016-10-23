@@ -70,3 +70,11 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
         }
     }
 };
+
+
+function removeFromArray(array, element) {
+    var i = array.indexOf(element);
+    if(i != -1) {
+        array.splice(i, 1);
+    }
+}

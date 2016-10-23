@@ -249,7 +249,7 @@
         $('#send-solution').prop('disabled', true);
         const store_soln_url = "http://52.34.207.176/api/store_solution?token=" + user['token'];
         var fd = new FormData();
-        fd.append('name', $('#assignment-title').val());
+        fd.append('name', $('#solution-name').val());
         fd.append('assignment_id', selectedAssignment);
         fd.append('submission_file', $('#file-sel')[0].files[0]);
         $.ajax({
