@@ -164,6 +164,15 @@
                             <label id="file-name"></label>
                         </div>
                         <div class="form-group">
+                            <label for="assignment-pub-date">Active Date</label>
+                            <div class='input-group date' id='datetimepicker'>
+                                <input type='text' class="form-control" id="assignment-pub-date"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="assignment-due-date">Due Date</label>
                             <div class='input-group date' id='datetimepicker1'>
                                 <input type='text' class="form-control" id="assignment-due-date"/>
@@ -209,6 +218,10 @@
         errors_container.hide();
         success_container = $('#success-container');
         success_container.hide();
+        $('#datetimepicker').datetimepicker({
+                    format: 'YYYY-MM-DD HH:mm:ss'
+                }
+        );
         $('#datetimepicker1').datetimepicker({
                     format: 'YYYY-MM-DD HH:mm:ss'
                 }
@@ -284,7 +297,7 @@
                 assignment.description + "</br>" +
                 assignment.due_date+ "</br>" +
                 "<a href='"+assignment.resource_url+"'>Attachment</a> </br>"+
-                "<label>Max Marks: </label>" + assignment.max_marks;
+                "<label>Max Marks:</label> " + assignment.max_marks;
         assignmentItem.html(item);
         assignmentsAnchor.append(assignmentItem);
     }
@@ -296,6 +309,7 @@
         fd.append('name', $('#assignment-title').val());
         fd.append('description', $('#assignment-description').val());
         fd.append('max_marks', $('#assignment-marks').val());
+        fd.append('publish_date', $('#assignment-pub-date').val());
         fd.append('due_date', $('#assignment-due-date').val());
         fd.append('uos_id', getParameterByName('uosId'));
         fd.append('image', $('#file-sel')[0].files[0]);
@@ -310,12 +324,17 @@
             success: function (json) {
                 console.log(json);
                 createAssignmentItem(json.data[0], $("#assignment-items"));
+                success_container.html("Assignment has been created");
+                success_container.show();
                 $('#send-assignment').prop('disabled', false);
                 $('#new-assignment-modal').modal('toggle');
             },
             error: function (xhr, errmsg, err) {
                 console.log(xhr.status + ": " + xhr.responseText);
                 $('#send-assignment').prop('disabled', false);
+                var res = JSON.parse(xhr.responseText);
+                errors_container.html(res['error']);
+                errors_container.show();
             }
         });
     }

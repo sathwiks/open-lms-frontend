@@ -50,7 +50,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-home"></i>  <a href="index.html">Home</a>
+                            <i class="fa fa-home"></i> <a href="index.html">Home</a>
                         </li>
                         <li class="active">
                             <i class="fa fa-book"></i> UoS
@@ -105,33 +105,36 @@
 <script>
     $(document).ready(function () {
 
-
-
+    });
+    $(document).ready(function () {
+        $('#home-link').addClass('active');
         var listMasterGroup = $('#courseList');
-        // var courseList = [{"name":"CISS6022 Cybersecurity","coordinator":"Arts eLearning Team;  Meri Jankuloska;  Frank Smith;  John Stavrakakis; "},
-        //   {"name":"ELEC5620 Model Based Software Engineering","coordinator":"Weicong Kong;  Dong Yuan;  Yu Zhao;"},
-        //   {"name":"INFO5990 Professional Practice in IT (Normal (lecture/lab/tutorial) evening)","coordinator":"Khimji Vaghjiani;  Katie Yang; "},
-        //   {"name":"INFO5992 Understanding IT Innovations","coordinator":"Jinman Kim;  Katie Yang; "}];
         var courseList;
 
         var cookie = read_cookie("user");
         console.log(cookie["token"]);
-
-        $.get("http://52.34.207.176/api/list_users_uos?token="+cookie["token"],function(data,status){
-            courseList = data["data"];
-            courseList.forEach(function(course){
-                listMasterGroup.append(getCreatedCourses(course));
+        var my_uos = get_my_uos();
+        if (my_uos != null) {
+            my_uos.forEach(function (uos) {
+                listMasterGroup.append(getCreatedCourses(uos));
             });
-        });
-
+        } else {
+            $.get("http://52.34.207.176/api/list_users_uos?token=" + cookie["token"], function (data, status) {
+                bake_cookie("uos", data);
+                courseList = data["data"];
+                courseList.forEach(function (course) {
+                    listMasterGroup.append(getCreatedCourses(course));
+                });
+            });
+        }
 
     });
 
-    function getCreatedCourses(course){
+    function getCreatedCourses(course) {
         var trElement = document.createElement('tr');
         var aElement = document.createElement('a');
         aElement.innerHTML = course.code + " " + course.title;
-        aElement.setAttribute("href","unitOfStudyDetail.html"+"?"+"uosId="+course.uos_id);
+        aElement.setAttribute("href", "unitOfStudyDetail.html" + "?" + "uosId=" + course.uos_id);
         var nameElement = document.createElement('td');
         nameElement.appendChild(aElement);
         var coordinateElement = document.createElement('td');

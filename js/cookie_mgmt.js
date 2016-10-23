@@ -15,5 +15,9 @@ function delete_cookie(name) {
 
 function get_my_uos() {
     const resp = read_cookie("uos");
-    return resp.data;
+    if (resp != null) {
+        return resp.data;
+    } else {
+        return null;
+    }
 }

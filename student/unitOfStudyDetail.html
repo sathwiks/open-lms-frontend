@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="../css/sb-admin.css" rel="stylesheet">
+    <link href="../css/common-styles.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -23,8 +24,8 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
@@ -34,6 +35,7 @@
     <div id="wrapper">
 
         <div w3-include-html="nav.html"></div>
+
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -53,153 +55,192 @@
                             </li>
                         </ol>
                     </div>
+                  </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading1">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                           aria-expanded="true" aria-controls="collapseOne">
+                            Outline
+                        </a>
+                    </h4>
                 </div>
-                <!-- /.row -->
-
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                               aria-expanded="true" aria-controls="collapseOne">
-                                Outline
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="outline" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    </div>
+                <div id="outline" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                               aria-expanded="true" aria-controls="collapseOne">
-                                Teacher <span class="small-text"></span>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="coordinator" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading2">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                           aria-expanded="true" aria-controls="collapseOne">
+                            Teacher <span class="small-text"></span>
+                        </a>
+                    </h4>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                               aria-expanded="true" aria-controls="collapseOne">
-                                Materials
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="slides" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-
-                    </div>
+                <div id="coordinator" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2">
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading3">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                           aria-expanded="true" aria-controls="collapseOne">
+                            Materials
+                        </a>
+                    </h4>
+                </div>
+                <div id="materials" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading3">
 
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                               aria-expanded="true" aria-controls="collapseOne">
-                                Assignment
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="assignment" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading4">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                           aria-expanded="true" aria-controls="collapseOne">
+                            Assignment
+                        </a>
+                    </h4>
+                </div>
+                <div id="assignment" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading4">
 
                 </div>
                 <!-- /.row -->
 
             </div>
             <!-- /.container-fluid -->
-
+          </div>
         </div>
-        <!-- /#page-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
+    <!-- /#page-wrapper -->
 
-    <script src="http://www.w3schools.com/lib/w3data.js"></script>
-    <script>
-        w3IncludeHTML();
-    </script>
-    <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
+<script>
+    w3IncludeHTML();
+</script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
+<script src="https://fb.me/react-0.14.6.js"></script>
+<script src="https://fb.me/react-dom-0.14.6.js"></script>
+<script src="http://fb.me/JSXTransformer-0.12.1.js"></script>
 
-    <script src="../js/cookie_mgmt.js"></script>
-    <script src="../js/account_mgmt.js"></script>
+<!-- jQuery -->
+<script src="../js/jquery.js"></script>
 
-    <script>
-    $(document).ready(function(){
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
 
-      var cookie = read_cookie("user");
-      var uosId = location.search.substr(1).split("=")[1];
+<script src="../js/cookie_mgmt.js"></script>
+<script src="../js/account_mgmt.js"></script>
 
-      $.get("http://52.34.207.176/api/show_uos?uosId="+uosId+"&token="+cookie["token"],function(data,status){
-        var uosDetail = data["data"][0];
-        var outlineAnchor = $("#outline");
-        var coordinatorAnchor = $("#coordinator");
-        var slideAnchor = $("#slides");
-        var assignmentAnchor = $("#assignment");
-        outlineAnchor.append(createOutline(uosDetail));
-        coordinatorAnchor.append(createCoordinator(uosDetail));
-        slideAnchor.append(createSlides(uosDetail));
-        assignmentAnchor.append(createAssignment(uosDetail));
+<script type="text/jsx">
 
-      });
+    var Assignments = React.createClass({
+        render: function () {
+            var assignment_items = this.props.assignments.map(function (assignment) {
+                return <AssignmentItem key={assignment.id} assignment={assignment}/>
+            });
+            return (
+                    <ul id="assignment-items" className="list-group">
+                        {assignment_items}
+                    </ul>
+            );
+        }
+    });
+
+    var AssignmentItem = React.createClass({
+        render: function () {
+            return (
+                    <li className="list-group-item">
+                        <p className="strong">{this.props.assignment.name}</p>
+                        <p>{this.props.assignment.description}</p>
+                        <p><span className="strong">Due</span> {this.props.assignment.due_date}</p>
+                        <p><span className="strong">Max Marks:</span> {this.props.assignment.max_marks}</p>
+                        <p><a href={this.props.assignment.resource_url}>Attachment</a></p>
+                    </li>
+            );
+        }
+    });
+
+    $(document).ready(function () {
+
+        var cookie = read_cookie("user");
+        var uosId = location.search.substr(1).split("=")[1];
+
+        $.get("http://52.34.207.176/api/show_uos?uosId=" + uosId + "&token=" + cookie["token"], function (data, status) {
+            var uosDetail = data["data"][0];
+//            console.log(uosDetail);
+            var outlineAnchor = $("#outline");
+            var coordinatorAnchor = $("#coordinator");
+            var slideAnchor = $("#slides");
+            var assignmentAnchor = $("#assignment");
+            outlineAnchor.append(createOutline(uosDetail));
+            coordinatorAnchor.append(createCoordinator(uosDetail));
+            slideAnchor.append(createSlides(uosDetail));
+            createAssignment(uosDetail);
+
+        });
 
 
     });
 
-    function createOutline(uosDetail){
-      var outline = $("<div></div>");
-      outline.addClass("panel-body");
-      outline.html(uosDetail["desc"]);
-      return outline;
+    function createOutline(uosDetail) {
+        var outline = $("<div></div>");
+        outline.addClass("panel-body");
+        outline.html(uosDetail["desc"]);
+        return outline;
     }
 
-    function createCoordinator(uosDetail){
-      var coordinator = $("<div></div>");
-      coordinator.addClass("panel-body");
-      var name = $("<p></p>");
-      name.html(uosDetail["teacher_fname"] + uosDetail["teacher_lname"] );
-      var email = $("<p></p>");
-      email.html(uosDetail["teacher_email"]);
-      coordinator.append(name);
-      coordinator.append(email);
+    function createCoordinator(uosDetail) {
+        var coordinator = $("<div></div>");
+        coordinator.addClass("panel-body");
+        var name = $("<p></p>");
+        name.html(uosDetail["teacher_fname"] + uosDetail["teacher_lname"]);
+        var email = $("<p></p>");
+        email.html(uosDetail["teacher_email"]);
+        coordinator.append(name);
+        coordinator.append(email);
 
-      return coordinator;
+        return coordinator;
     }
 
-    function createSlides(uosDetail){
-      var slides = $("<div></div>");
+    function createSlides(uosDetail) {
+        var slides = $("<div></div>");
 
 
-      uosDetail["course_materials"].forEach(function(slide){
-        var slideItem = $("<div></div>");
-        slideItem.addClass("panel-body");
-        slideItem.html(slide["name"]);
-        slides.append(slideItem);
-      });
-      return slides;
+        uosDetail["course_materials"].forEach(function (slide) {
+            var slideItem = $("<div></div>");
+            slideItem.addClass("panel-body");
+            slideItem.html(slide["name"]);
+            slides.append(slideItem);
+        });
+        return slides;
     }
 
-    function createAssignment(uosDetail){
-      var assignments = $("<div></div>");
-
-      uosDetail["assignments"].forEach(function(assignment){
-        var assignmentItem = $("<div></div>");
-        assignmentItem.addClass("panel-body");
-        assignmentItem.html(assignment["name"]);
-        assignments.append(assignmentItem);
-      });
-      return assignments;
+    function createAssignment(uosDetail) {
+        var assignments = uosDetail.assignments;
+        ReactDOM.render(<Assignments assignments={assignments}/>, document.getElementById('assignment'));
+//        var assignmentsAnchor = $("#assignment-items");
+//
+//        uosDetail["assignments"].forEach(function (assignment) {
+//            createAssignmentItem(assignment, assignmentsAnchor);
+//        });
     }
 
-    </script>
+    function createAssignmentItem(assignment, assignmentsAnchor) {
+        var assignmentItem = $("<li></li>");
+        assignmentItem.addClass("list-group-item");
+        const item = "<span class='strong'>" + assignment.name + "</span></br>" +
+                assignment.description + "</br>" +
+                assignment.due_date + "</br>" +
+                "<a href='" + assignment.resource_url + "'>Attachment</a> </br>" +
+                "<label>Max Marks:</label> " + assignment.max_marks;
+        assignmentItem.html(item);
+        assignmentsAnchor.append(assignmentItem);
+    }
+
+</script>
 
 
 </body>
