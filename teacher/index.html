@@ -73,6 +73,10 @@
     w3IncludeHTML();
 </script>
 
+<script src="https://fb.me/react-0.14.6.js"></script>
+<script src="https://fb.me/react-dom-0.14.6.js"></script>
+<script src="http://fb.me/JSXTransformer-0.12.1.js"></script>
+
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>
 
@@ -81,7 +85,8 @@
 
 <script src="../js/cookie_mgmt.js"></script>
 <script src="../js/account_mgmt.js"></script>
-<script>
+<script type="text/jsx">
+
     const list_user_uos_url = "http://52.34.207.176/api/list_users_uos?token=" + user['token'];
     $.ajax({
         url: list_user_uos_url,
@@ -95,7 +100,8 @@
         }
     });
     $(document).ready(function () {
-       $('#home-link').addClass('active');
+        $('#home-link').addClass('active');
+        $('#username').html(getLoginName());
     });
 </script>
 

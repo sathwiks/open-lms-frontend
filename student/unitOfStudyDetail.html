@@ -180,82 +180,121 @@
 
         <div class="container-fluid">
 
-            <!-- Page Heading -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Unit of Study
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
-                        </li>
-                        <li class="active">
-                            <i class="fa fa-table"></i> UoS
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <!-- /.row -->
-
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="heading1">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                           aria-expanded="true" aria-controls="collapseOne">
-                            Outline
-                        </a>
-                    </h4>
-                </div>
-                <div id="outline" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="heading2">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                           aria-expanded="true" aria-controls="collapseOne">
-                            Teacher <span class="small-text"></span>
-                        </a>
-                    </h4>
-                </div>
-                <div id="coordinator" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2">
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="heading3">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                           aria-expanded="true" aria-controls="collapseOne">
-                            Materials
-                        </a>
-                    </h4>
-                </div>
-                <div id="materials" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading3">
-
-                </div>
-
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="heading4">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                           aria-expanded="true" aria-controls="collapseOne">
-                            Assignment
-                        </a>
-                    </h4>
-                </div>
-                <div id="assignment" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading4">
-
+            <div id="content">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Unit of Study
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-table"></i> UoS
+                            </li>
+                        </ol>
+                    </div>
                 </div>
                 <!-- /.row -->
 
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading1">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                Outline
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="outline" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading2">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                Teacher <span class="small-text"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="coordinator" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2">
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading3">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                Materials
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="materials" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading3">
+
+                    </div>
+
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading4">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                               aria-expanded="true" aria-controls="collapseOne">
+                                Assignment
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="assignment" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading4">
+
+                    </div>
+                    <!-- /.row -->
+
+                </div>
+                <!-- /.container-fluid -->
             </div>
-            <!-- /.container-fluid -->
+
+            <div id="loading">
+                <img src="../images/loading.gif">
+            </div>
+
         </div>
 
     </div>
     <!-- /#page-wrapper -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="new-solution-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">New assignment</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger" role="alert" id="errors-container"></div>
+                    <div class="alert alert-success" role="alert" id="success-container"></div>
+                    <form>
+                        <div class="form-group">
+                            <label for="solution-name">Name</label>
+                            <input type="text" class="form-control" id="solution-name">
+                        </div>
+                        <div class="form-group">
+                            <label id="browse-btn" class="btn btn-default btn-primary">
+                                Browse <input id="file-sel" type="file" style="display: none;">
+                            </label>
+                            <label id="file-name"></label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="send-solution">Submit</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 </div>
 <!-- /#wrapper -->
@@ -275,6 +314,11 @@
 
 <script type="text/jsx">
 
+    var selectedAssignment;
+    $('#content').hide();
+    var errors_container;
+    var success_container;
+
     var Assignments = React.createClass({
         render: function () {
             var assignment_items = this.props.assignments.map(function (assignment) {
@@ -289,27 +333,36 @@
     });
 
     var AssignmentItem = React.createClass({
+
+        openModal: function (id) {
+            selectedAssignment = id;
+            $('#new-solution-modal').modal('toggle');
+        },
+
         render: function () {
             return (
                     <li className="list-group-item">
                         <p className="strong">{this.props.assignment.name}</p>
                         <p>{this.props.assignment.description}</p>
-                        <p><span className="strong">Due</span> {this.props.assignment.due_date}</p>
+                        <p><span className="strong">Due:</span> {this.props.assignment.due_date}</p>
                         <p><span className="strong">Max Marks:</span> {this.props.assignment.max_marks}</p>
                         <p><a href={this.props.assignment.resource_url}>Attachment</a></p>
+                        <button className="btn btn-default" onClick={this.openModal.bind(this, this.props.assignment.id)}>Submit</button>
                     </li>
             );
         }
     });
 
     $(document).ready(function () {
-
+        errors_container = $('#errors-container');
+        errors_container.hide();
+        success_container = $('#success-container');
+        success_container.hide();
         var cookie = read_cookie("user");
         var uosId = location.search.substr(1).split("=")[1];
 
         $.get("http://52.34.207.176/api/show_uos?uosId=" + uosId + "&token=" + cookie["token"], function (data, status) {
             var uosDetail = data["data"][0];
-//            console.log(uosDetail);
             var outlineAnchor = $("#outline");
             var coordinatorAnchor = $("#coordinator");
             var slideAnchor = $("#slides");
@@ -318,11 +371,50 @@
             coordinatorAnchor.append(createCoordinator(uosDetail));
             slideAnchor.append(createSlides(uosDetail));
             createAssignment(uosDetail);
-
+            $('#loading').hide();
+            $('#content').show();
         });
 
+        $('#file-sel').change(function () {
+            $('#file-name').html($('#file-sel')[0].files[0].name);
+        });
+        $('#send-solution').click(uploadSolution);
 
     });
+
+    function uploadSolution() {
+        $('#send-solution').prop('disabled', true);
+        const store_soln_url = "http://52.34.207.176/api/store_solution?token=" + user['token'];
+        var fd = new FormData();
+        fd.append('name', $('#assignment-title').val());
+        fd.append('assignment_id', selectedAssignment);
+        fd.append('submission_file', $('#file-sel')[0].files[0]);
+        $.ajax({
+            type: 'POST',
+            url: store_soln_url,
+            data: fd,
+            contentType: false,
+            processData: false,
+            cache: false,
+            dataType: 'json',
+            success: function (json) {
+                console.log(json);
+//                createAssignmentItem(json.data[0], $("#assignment-items"));
+                success_container.html("Assignment has been created");
+                success_container.show();
+                $('#send-solution').prop('disabled', false);
+                $('#new-solution-modal').modal('toggle');
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+                $('#send-solution').prop('disabled', false);
+                var res = JSON.parse(xhr.responseText);
+                errors_container.html(res['error']);
+                errors_container.show();
+                $('#new-solution-modal').modal('toggle');
+            }
+        });
+    }
 
     function createOutline(uosDetail) {
         var outline = $("<div></div>");
@@ -360,11 +452,6 @@
     function createAssignment(uosDetail) {
         var assignments = uosDetail.assignments;
         ReactDOM.render(<Assignments assignments={assignments}/>, document.getElementById('assignment'));
-//        var assignmentsAnchor = $("#assignment-items");
-//
-//        uosDetail["assignments"].forEach(function (assignment) {
-//            createAssignmentItem(assignment, assignmentsAnchor);
-//        });
     }
 
     function createAssignmentItem(assignment, assignmentsAnchor) {
