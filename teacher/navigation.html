@@ -106,7 +106,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="#" id="logout-btn"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                    <a href="#" id="logout-btn" onclick="logout()"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                 </li>
             </ul>
         </li>
@@ -114,25 +114,19 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li class="active">
+            <li id="home-link">
                 <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Home </a>
             </li>
-            <li>
+            <li id="announcement-link">
                 <a href="announcements.html"><i class="fa fa-fw fa-bullhorn" aria-hidden="true"></i> Announcements </a>
             </li>
-            <li>
+            <li id="uos-link">
                 <a href="unitOfStudy.html"><i class="fa fa-fw fa-book"></i> UoS </a>
             </li>
-            <li>
+            <li id="notification-link">
                 <a href="notification.html"><i class="fa fa-fw fa-desktop"></i> Notification </a>
             </li>
-            <li>
-                <a href="assignments.html"><i class="fa fa-fw fa-envelope"></i> Assignments </a>
-            </li>
-            <li>
-                <a href="materials.html"><i class="fa fa-fw fa-envelope"></i> Learning Material </a>
-            </li>
-            <li>
+            <li id="email-link">
                 <a href="email.html"><i class="fa fa-fw fa-envelope"></i> Email </a>
             </li>
         </ul>
