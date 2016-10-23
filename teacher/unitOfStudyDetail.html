@@ -240,11 +240,12 @@
             createAssignment(uosDetail);
             $('#loading').hide();
             $('#content').show();
-            $('#file-sel').change(function () {
-                $('#file-name').html($('#file-sel')[0].files[0].name);
-            });
-            $('#send-assignment').click(uploadAssignment);
         });
+
+        $('#file-sel').change(function () {
+            $('#file-name').html($('#file-sel')[0].files[0].name);
+        });
+        $('#send-assignment').click(uploadAssignment);
 
 
     });
@@ -335,6 +336,7 @@
                 var res = JSON.parse(xhr.responseText);
                 errors_container.html(res['error']);
                 errors_container.show();
+                $('#new-solution-modal').modal('toggle');
             }
         });
     }
