@@ -52,6 +52,7 @@ function getLoginName(){
 }
 
 $( document ).ready(function() {
+
     $('#logout-btn').click(logout);
 
     $('#login-name').html(getLoginName());
