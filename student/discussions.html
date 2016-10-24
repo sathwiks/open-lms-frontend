@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
 
 <head>
 
@@ -9,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Discussion - Open LMS</title>
+    <title>Open UoS-Detail</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -17,10 +18,8 @@
     <!-- Custom CSS -->
     <link href="../css/sb-admin.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="../css/plugins/morris.css" rel="stylesheet">
-
     <link href="../css/common-styles.css" rel="stylesheet">
+    <link href="../css/uos_details.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -38,123 +37,460 @@
 
 <div id="wrapper">
 
+
     <div w3-include-html="nav.html"></div>
 
     <div id="page-wrapper">
-      <div class="container-fluid">
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    Notifications
-                </h1>
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="fa fa-home"></i> <a href="index.html">Home</a>
-                    </li>
-                    <li class="active">
-                        <i class="fa fa-desktop"></i> Notifications
-                    </li>
-                </ol>
-            </div>
-        </div>
-        <!-- /.row -->
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                           aria-expanded="true" aria-controls="collapseOne">
-                            Tutorial on 18/11 at 3:00pm <span class="small-text">Dr. John Doe - COMP5620 - 20/10/2016 at 8:33pm</span>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Readings for Week 2 <span
-                                class="small-text">Dr. John Doe - COMP5620 - 20/10/2016 at 8:51pm</span>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            No class on 4/11<span
-                                class="small-text">Dr. John Doe - COMP5620 - 20/10/2016 at 8:33pm</span>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-  </div>
+        <div class="container-fluid">
+
+            <div id="content">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Discussions <span id="thread-name-heading"></span>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-table"></i> Discussions
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div id="create-thread">
+                    <button class="btn btn-primary" id="new-thread-btn">
+                        <i class="fa fa-plus" aria-hidden="true"></i> New Thread
+                    </button>
+                    <div class="form-group" style="margin-top: 8px">
+                        <input type="text" id="thread-name"  class="form-control"/>
+                    </div>
+
+                </div>
+
+                <div id="thread-list-container">
+                </div>
+
+                <div id="comment-list-container">
+                </div>
+
+                <div id="create-comment">
+                    <button class="btn btn-primary" id="new-comment-btn">
+                        <i class="fa fa-plus" aria-hidden="true"></i> New comment
+                    </button>
+                    <div class="form-group" style="margin-top: 8px">
+                        <textarea class="form-control" rows="5" id="thread-comment"></textarea>
+                    </div>
+
+                </div>
+
+                <div id="polls-list-container">
+                </div>
+
+                <div id="create-poll">
+                    <button class="btn btn-primary" id="new-poll-btn">
+                        <i class="fa fa-plus" aria-hidden="true"></i> New Poll
+                    </button>
+                    <div class="form-group" style="margin-top: 8px">
+                        <textarea class="form-control" rows="5" id="poll-question" placeholder="Question"></textarea>
+                        <input type="text" id="thread-poll-1"  placeholder="Option 1" class="form-control" style="margin-top: 8px"/>
+                        <input type="text" id="thread-poll-2"  placeholder="Option 2" class="form-control" style="margin-top: 8px"/>
+                        <input type="text" id="thread-poll-3"  placeholder="Option 3" class="form-control" style="margin-top: 8px"/>
+                        <input type="text" id="thread-poll-4"  placeholder="Option 4" class="form-control" style="margin-top: 8px"/>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <div id="loading" class="hide">
+                <img src="../images/loading.gif">
+            </div>
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
+
+
 </div>
 <!-- /#wrapper -->
 
-<script src="http://www.w3schools.com/lib/w3data.js"></script>
 <script>
     w3IncludeHTML();
 </script>
+
+<script src="https://fb.me/react-0.14.6.js"></script>
+<script src="https://fb.me/react-dom-0.14.6.js"></script>
+<script src="http://fb.me/JSXTransformer-0.12.1.js"></script>
+
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
+<script src="../js/moment.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-datetime-picker.js"></script>
 
-<!-- Morris Charts JavaScript -->
-<script src="../js/plugins/morris/raphael.min.js"></script>
-<script src="../js/plugins/morris/morris.min.js"></script>
-<script src="../js/plugins/morris/morris-data.js"></script>
+<script src="../js/cookie_mgmt.js"></script>
+<script src="../js/account_mgmt.js"></script>
+<script type="text/jsx">
 
-<!-- Flot Charts JavaScript -->
-<!--[if lte IE 8]>
-<script src="js/excanvas.min.js"></script><![endif]-->
-<script src="../js/plugins/flot/jquery.flot.js"></script>
-<script src="../js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="../js/plugins/flot/jquery.flot.resize.js"></script>
-<script src="../js/plugins/flot/jquery.flot.pie.js"></script>
-<script src="../js/plugins/flot/flot-data.js"></script>
+    var uos_id = getParameterByName("uos_id", window.location.href);
+    var thread_id = getParameterByName("thread_id", window.location.href);
+    var threads = [];
+    var comments = [];
+    var polls = [];
+    var threadsListReact;
+    var commentsListReact;
+    var pollsListreact;
+
+    var ThreadItem = React.createClass({
+
+        render: function () {
+            var thread = this.props.thread;
+            return (
+                    <li className="list-group-item">
+                        <div>
+                            <a href={window.location.href + "?thread_id=" + thread.thread_id}>{thread.thread_name}</a>
+                            <p>{thread.teacher_fname + " " + thread.teacher_lname}</p>
+                        </div>
+                    </li>
+            );
+
+        }
+
+    });
+
+    var ThreadList = React.createClass({
+
+        getInitialState: function () {
+            return {
+                threads: threads,
+            }
+        },
+
+        updateThreads: function (threads) {
+            this.setState({
+                threads: threads
+            });
+        },
+
+        render: function () {
+            var thread_items = this.state.threads.map(function (thread) {
+                return <ThreadItem key={thread.thread_id} thread={thread}/>
+            });
+            return (
+                    <ul className="list-group">
+                        {thread_items}
+                    </ul>
+            );
+
+        }
+
+    });
+
+
+    var CommentItem = React.createClass({
+
+        render: function () {
+            var comment = this.props.comment;
+            return (
+                    <li className="list-group-item">
+                        <div>
+                            <p >{comment.comment}</p>
+                            <p>{comment.commentor_fname + " " + comment.commentor_lname}</p>
+                        </div>
+                    </li>
+            );
+
+        }
+
+    });
+
+    var CommentList = React.createClass({
+
+        getInitialState: function () {
+            return {
+                comments: comments,
+            }
+        },
+
+        updateComments: function (comments) {
+            this.setState({
+                comments: comments
+            });
+        },
+
+        render: function () {
+            var comment_items = this.state.comments.map(function (comment) {
+                return <CommentItem key={comment.comment_id} comment={comment}/>
+            });
+            return (
+                    <ul className="list-group">
+                        {comment_items}
+                    </ul>
+            );
+
+        }
+
+    });
+
+    var PollItem = React.createClass({
+
+        getInitialState: function () {
+            return {
+                poll_id: this.props.poll.poll_id,
+                option_id: 0,
+            }
+        },
+
+        setValue: function (field, opt_id) {
+            var object = {};
+            object[field] = opt_id;
+            console.log(object[field]);
+            this.setState(object);
+        },
+
+        submitPoll: function () {
+            $('.submit-btn').prop('disabled', true);
+            const url = "http://52.34.207.176/api/submit_poll_answer?token=" + user['token'];
+            const data = this.state;
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                dataType: "json",
+                success: function (response) {
+                    $('.submit-btn').prop('disabled', false);
+                    const poll_id = "#poll-"+this.state.poll_id;
+                    $(poll_id).prop('disabled', true);
+                    alert("saved");
+                }.bind(this),
+                error: function (xhr, errmsg, err) {
+                    console.log(xhr.status + ": " + xhr.responseText);
+                    var res = JSON.parse(xhr.responseText);
+                    $('.submit-btn').prop('disabled', false);
+                    alert("error");
+                }.bind(this)
+            });
+        },
+
+        render: function () {
+            var poll = this.props.poll;
+            return (
+                    <li className="list-group-item">
+                        <p>{poll.question}</p>
+                        <div className="radio">
+                            <label><input type="radio" name="optradio"
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[0].option_id)}/>{poll.options[0].option}
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label><input type="radio" name="optradio"
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[1].option_id)}/>{poll.options[1].option}
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label><input type="radio" name="optradio"
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[2].option_id)}/>{poll.options[2].option}
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label><input type="radio" name="optradio"
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[3].option_id)}/>{poll.options[3].option}
+                            </label>
+                        </div>
+                        <button className="btn-default btn submit-btn" onClick={this.submitPoll} id={"poll-"+poll.poll_id}>Submit</button>
+                    </li>
+            );
+
+        }
+
+    });
+
+    var PollList = React.createClass({
+
+        getInitialState: function () {
+            return {
+                polls: polls,
+            }
+        },
+
+        updatePolls: function (polls) {
+            this.setState({
+                polls: polls
+            });
+        },
+
+        render: function () {
+            var poll_items = this.state.polls.map(function (poll) {
+                return <PollItem key={poll.poll_id} poll={poll}/>
+            });
+            return (
+                    <ul className="list-group">
+                        {poll_items}
+                    </ul>
+            );
+
+        }
+
+    });
+
+
+    $(document).ready(function () {
+        $('#create-thread').addClass("hide");
+        $('#username').html(getLoginName());
+        if (thread_id === null) {
+            getDiscussionsForUos();
+            $('#create-comment').addClass("hide");
+            threadsListReact = ReactDOM.render(<ThreadList/>, document.getElementById('thread-list-container'));
+            $('#new-thread-btn').click(createNewThread);
+            $('#create-poll').addClass('hide');
+        } else {
+            getCommentsForThread();
+            $('#create-thread').addClass("hide");
+            commentsListReact = ReactDOM.render(<CommentList/>, document.getElementById('comment-list-container'));
+            $('#new-comment-btn').click(createNewComment);
+            pollsListreact = ReactDOM.render(<PollList/>, document.getElementById('polls-list-container'));
+            if (user.role_id == 1) {
+                $('#create-poll').addClass('hide');
+            }
+        }
+
+    });
+
+    function getDiscussionsForUos() {
+        const url = "http://52.34.207.176/api/list_threads?token=" + user['token'] + "&uos_id=" + uos_id;
+        $.get(url, function (data, status) {
+            if (status == "success") {
+                threads = data.data;
+                console.log(threads);
+                threadsListReact.updateThreads(threads);
+            }
+        });
+    }
+
+
+
+    function createNewThread() {
+        const name = $('#thread-name').val();
+        if (name === '') {
+            alert("Name cannot be empty");
+            return;
+        }
+        const url = "http://52.34.207.176/api/store_threads?token=" + user['token'];
+        const data = {
+            name: name,
+            uos_id: uos_id,
+        };
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            dataType: 'json',
+            success: function (json) {
+                mobileAnalyticsClient.submitEvents();
+                console.log(json);
+                const thread = json.data[0];
+                threads.push(thread);
+                threadsListReact.updateThreads(threads);
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(xhr);
+            }
+        });
+    }
+
+    function getCommentsForThread() {
+        const url = "http://52.34.207.176/api/show_threads_and_comments?token=" + user['token'] + "&thread_id=" + thread_id;
+        $.get(url, function (data, status) {
+            if (status == "success") {
+                mobileAnalyticsClient.submitEvents();
+                comments = data.data[0].comments;
+                console.log(comments);
+                commentsListReact.updateComments(comments);
+                $('#thread-name-heading').html(" - "+data.data[0].thread_name);
+                getPollsForThread();
+            }
+        });
+    }
+
+    function createNewComment() {
+        const comment = $('#thread-comment').val();
+        if (comment === '') {
+            alert("Comment cannot be empty");
+            return;
+        }
+        const url = "http://52.34.207.176/api/store_comment_thread?token=" + user['token'];
+        const data = {
+            comment: comment,
+            thread_id: thread_id,
+        };
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            dataType: 'json',
+            success: function (json) {
+                mobileAnalyticsClient.submitEvents();
+                const comment = json.data[0];
+                comments.push(comment);
+                commentsListReact.updateComments(comments);
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(xhr);
+            }
+        });
+    }
+
+    function getPollsForThread() {
+        const url = "http://52.34.207.176/api/list_polls?token=" + user['token'] + "&thread_id=" + thread_id;
+        $.get(url, function (data, status) {
+            if (status == "success") {
+                console.log(data);
+                mobileAnalyticsClient.submitEvents();
+                polls = data.data;
+                pollsListreact.updatePolls(polls);
+            }
+        });
+    }
+
+</script>
+
+<script src="../js/aws-sdk.min.js"></script>
+<script src="../js/aws-sdk-mobile-analytics.min.js"></script>
+
+<script>
+    //Make sure region is 'us-east-1'
+    AWS.config.region = 'us-east-1';
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:ad146b40-3d9a-47bf-9b43-d415c8351fa7' //Amazon Cognito Identity Pool ID
+    });
+
+    var options = {
+        appId : 'd2700019825745bf9f7fa84d1772d119', //Amazon Mobile Analytics App ID
+        appTitle : "OPEN_LMS",              //Optional e.g. 'Example App'
+        appVersionName : "1.0", //Optional e.g. '1.4.1'
+        appVersionCode : "1", //Optional e.g. '42'
+        appPackageName : "com.tech.openlms"  //Optional e.g. 'com.amazon.example'
+    };
+
+    var mobileAnalyticsClient = new AMA.Manager(options);
+
+    mobileAnalyticsClient.submitEvents();
+</script>
+
 
 </body>
 

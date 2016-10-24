@@ -68,9 +68,15 @@
                         <i class="fa fa-plus" aria-hidden="true"></i> New Thread
                     </button>
                     <div class="form-group" style="margin-top: 8px">
-                        <input type="text" id="thread-name"  class="form-control"/>
+                        <input type="text" id="thread-name" class="form-control"/>
                     </div>
 
+                </div>
+
+                <div id="thread-list-container">
+                </div>
+
+                <div id="comment-list-container">
                 </div>
 
                 <div id="create-comment">
@@ -83,10 +89,8 @@
 
                 </div>
 
-                <div id="thread-list-container">
-                </div>
+                <div id="polls-list-container">
 
-                <div id="comment-list-container">
                 </div>
 
                 <div id="create-poll">
@@ -95,15 +99,16 @@
                     </button>
                     <div class="form-group" style="margin-top: 8px">
                         <textarea class="form-control" rows="5" id="poll-question" placeholder="Question"></textarea>
-                        <input type="text" id="thread-poll-1"  placeholder="Option 1" class="form-control" style="margin-top: 8px"/>
-                        <input type="text" id="thread-poll-2"  placeholder="Option 2" class="form-control" style="margin-top: 8px"/>
-                        <input type="text" id="thread-poll-3"  placeholder="Option 3" class="form-control" style="margin-top: 8px"/>
-                        <input type="text" id="thread-poll-4"  placeholder="Option 4" class="form-control" style="margin-top: 8px"/>
+                        <input type="text" id="thread-poll-1" placeholder="Option 1" class="form-control"
+                               style="margin-top: 8px"/>
+                        <input type="text" id="thread-poll-2" placeholder="Option 2" class="form-control"
+                               style="margin-top: 8px"/>
+                        <input type="text" id="thread-poll-3" placeholder="Option 3" class="form-control"
+                               style="margin-top: 8px"/>
+                        <input type="text" id="thread-poll-4" placeholder="Option 4" class="form-control"
+                               style="margin-top: 8px"/>
                     </div>
 
-                </div>
-
-                <div id="polls-list-container">
                 </div>
 
             </div>
@@ -147,8 +152,10 @@
     var thread_id = getParameterByName("thread_id", window.location.href);
     var threads = [];
     var comments = [];
+    var polls = [];
     var threadsListReact;
     var commentsListReact;
+    var pollsListreact;
 
     var ThreadItem = React.createClass({
 
@@ -241,6 +248,108 @@
 
     });
 
+    var PollItem = React.createClass({
+
+        getInitialState: function () {
+            return {
+                poll_id: this.props.poll.poll_id,
+                option_id: 0,
+            }
+        },
+
+        setValue: function (field, opt_id) {
+            var object = {};
+            object[field] = opt_id;
+            console.log(object[field]);
+            this.setState(object);
+        },
+
+        submitPoll: function () {
+            $('.submit-btn').prop('disabled', true);
+            const url = "http://52.34.207.176/api/submit_poll_answer?token=" + user['token'];
+            const data = this.state;
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                dataType: "json",
+                success: function (response) {
+                    $('.submit-btn').prop('disabled', false);
+                    const poll_id = "#poll-"+this.state.poll_id;
+                    $(poll_id).prop('disabled', true);
+                    alert("saved");
+                }.bind(this),
+                error: function (xhr, errmsg, err) {
+                    console.log(xhr.status + ": " + xhr.responseText);
+                    var res = JSON.parse(xhr.responseText);
+                    $('.submit-btn').prop('disabled', false);
+                    alert("error");
+                }.bind(this)
+            });
+        },
+
+        render: function () {
+            var poll = this.props.poll;
+            return (
+                    <li className="list-group-item">
+                        <p>{poll.question}</p>
+                        <div className="radio">
+                            <label><input type="radio" name="optradio"
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[0].option_id)}/>{poll.options[0].option}
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label><input type="radio" name="optradio"
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[1].option_id)}/>{poll.options[1].option}
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label><input type="radio" name="optradio"
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[2].option_id)}/>{poll.options[2].option}
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label><input type="radio" name="optradio"
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[3].option_id)}/>{poll.options[3].option}
+                            </label>
+                        </div>
+                        <button className="btn-default btn submit-btn" onClick={this.submitPoll} id={"poll-"+poll.poll_id}>Submit</button>
+                    </li>
+            );
+
+        }
+
+    });
+
+    var PollList = React.createClass({
+
+        getInitialState: function () {
+            return {
+                polls: polls,
+            }
+        },
+
+        updatePolls: function (polls) {
+            this.setState({
+                polls: polls
+            });
+        },
+
+        render: function () {
+            var poll_items = this.state.polls.map(function (poll) {
+                return <PollItem key={poll.poll_id} poll={poll}/>
+            });
+            return (
+                    <ul className="list-group">
+                        {poll_items}
+                    </ul>
+            );
+
+        }
+
+    });
+
 
     $(document).ready(function () {
         $('#username').html(getLoginName());
@@ -255,6 +364,8 @@
             $('#create-thread').addClass("hide");
             commentsListReact = ReactDOM.render(<CommentList/>, document.getElementById('comment-list-container'));
             $('#new-comment-btn').click(createNewComment);
+            pollsListreact = ReactDOM.render(<PollList/>, document.getElementById('polls-list-container'));
+            $('#new-poll-btn').click(createPoll);
         }
 
     });
@@ -271,7 +382,7 @@
     }
 
 
-    
+
     function createNewThread() {
         const name = $('#thread-name').val();
         if (name === '') {
@@ -309,6 +420,8 @@
                 comments = data.data[0].comments;
                 console.log(comments);
                 commentsListReact.updateComments(comments);
+                $('#thread-name-heading').html(" - " + data.data[0].thread_name);
+                getPollsForThread();
             }
         });
     }
@@ -341,6 +454,50 @@
         });
     }
 
+    function getPollsForThread() {
+        const url = "http://52.34.207.176/api/list_polls?token=" + user['token'] + "&thread_id=" + thread_id;
+        $.get(url, function (data, status) {
+            if (status == "success") {
+                console.log(data);
+                mobileAnalyticsClient.submitEvents();
+                polls = data.data;
+                pollsListreact.updatePolls(polls);
+            }
+        });
+    }
+
+    function createPoll() {
+        const question = $('#poll-question').val();
+        const option1 = $('#thread-poll-1').val();
+        const option2 = $('#thread-poll-2').val();
+        const option3 = $('#thread-poll-3').val();
+        const option4 = $('#thread-poll-4').val();
+        if (question === '' || option1 === '' || option2 === '' || option3 === '' || option4 === '') {
+            alert("Poll fields cannot be empty");
+        }
+        const url = "http://52.34.207.176/api/store_polls?token=" + user['token'];
+        const data = {
+            question: question,
+            option1: option1,
+            option2: option2,
+            option3: option3,
+            option4: option4,
+            thread_id: thread_id,
+        };
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            dataType: 'json',
+            success: function (json) {
+                console.log(json);
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(xhr);
+            }
+        });
+    }
+
 </script>
 
 <script src="../js/aws-sdk.min.js"></script>
@@ -354,11 +511,11 @@
     });
 
     var options = {
-        appId : 'd2700019825745bf9f7fa84d1772d119', //Amazon Mobile Analytics App ID
-        appTitle : "OPEN_LMS",              //Optional e.g. 'Example App'
-        appVersionName : "1.0", //Optional e.g. '1.4.1'
-        appVersionCode : "1", //Optional e.g. '42'
-        appPackageName : "com.tech.openlms"  //Optional e.g. 'com.amazon.example'
+        appId: 'd2700019825745bf9f7fa84d1772d119', //Amazon Mobile Analytics App ID
+        appTitle: "OPEN_LMS",              //Optional e.g. 'Example App'
+        appVersionName: "1.0", //Optional e.g. '1.4.1'
+        appVersionCode: "1", //Optional e.g. '42'
+        appPackageName: "com.tech.openlms"  //Optional e.g. 'com.amazon.example'
     };
 
     var mobileAnalyticsClient = new AMA.Manager(options);

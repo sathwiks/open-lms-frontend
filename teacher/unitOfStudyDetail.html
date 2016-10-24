@@ -300,6 +300,7 @@
     var materialsReact;
     var assignments;
     var materials;
+    var uos_id = getParameterByName("uosId");
 
     var Assignments = React.createClass({
 
@@ -648,7 +649,7 @@
     $(document).ready(function () {
         $('#uos-link').addClass('active');
         $('#username').html(getLoginName());
-        $('#discussion-link').attr('href', "/discussions.html?uos_id="+uos_id);
+        $('#discussion-link').attr('href', "discussions.html?uos_id="+uos_id);
     });
 
 </script>
