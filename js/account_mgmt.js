@@ -20,6 +20,7 @@ function login(email, password , callback) {
             data: data,
             dataType: "json",
             success: function (response) {
+                mobileAnalyticsClient.submitEvents();
                 var user = response;
                 bake_cookie("user", user);
                 callback({

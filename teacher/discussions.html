@@ -249,6 +249,7 @@
             $('#create-comment').addClass("hide");
             threadsListReact = ReactDOM.render(<ThreadList/>, document.getElementById('thread-list-container'));
             $('#new-thread-btn').click(createNewThread);
+            $('#create-poll').addClass('hide');
         } else {
             getCommentsForThread();
             $('#create-thread').addClass("hide");
@@ -288,6 +289,8 @@
             data: data,
             dataType: 'json',
             success: function (json) {
+                mobileAnalyticsClient.submitEvents();
+                console.log(json);
                 const thread = json.data[0];
                 threads.push(thread);
                 threadsListReact.updateThreads(threads);
@@ -302,6 +305,7 @@
         const url = "http://52.34.207.176/api/show_threads_and_comments?token=" + user['token'] + "&thread_id=" + thread_id;
         $.get(url, function (data, status) {
             if (status == "success") {
+                mobileAnalyticsClient.submitEvents();
                 comments = data.data[0].comments;
                 console.log(comments);
                 commentsListReact.updateComments(comments);
@@ -326,6 +330,7 @@
             data: data,
             dataType: 'json',
             success: function (json) {
+                mobileAnalyticsClient.submitEvents();
                 const comment = json.data[0];
                 comments.push(comment);
                 commentsListReact.updateComments(comments);
@@ -336,6 +341,29 @@
         });
     }
 
+</script>
+
+<script src="../js/aws-sdk.min.js"></script>
+<script src="../js/aws-sdk-mobile-analytics.min.js"></script>
+
+<script>
+    //Make sure region is 'us-east-1'
+    AWS.config.region = 'us-east-1';
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:ad146b40-3d9a-47bf-9b43-d415c8351fa7' //Amazon Cognito Identity Pool ID
+    });
+
+    var options = {
+        appId : 'd2700019825745bf9f7fa84d1772d119', //Amazon Mobile Analytics App ID
+        appTitle : "OPEN_LMS",              //Optional e.g. 'Example App'
+        appVersionName : "1.0", //Optional e.g. '1.4.1'
+        appVersionCode : "1", //Optional e.g. '42'
+        appPackageName : "com.tech.openlms"  //Optional e.g. 'com.amazon.example'
+    };
+
+    var mobileAnalyticsClient = new AMA.Manager(options);
+
+    mobileAnalyticsClient.submitEvents();
 </script>
 
 

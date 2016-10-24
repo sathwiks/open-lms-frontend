@@ -253,7 +253,28 @@
         });
     }
 </script>
+<script src="../js/aws-sdk.min.js"></script>
+<script src="../js/aws-sdk-mobile-analytics.min.js"></script>
 
+<script>
+    //Make sure region is 'us-east-1'
+    AWS.config.region = 'us-east-1';
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:ad146b40-3d9a-47bf-9b43-d415c8351fa7' //Amazon Cognito Identity Pool ID
+    });
+
+    var options = {
+        appId : 'd2700019825745bf9f7fa84d1772d119', //Amazon Mobile Analytics App ID
+        appTitle : "OPEN_LMS",              //Optional e.g. 'Example App'
+        appVersionName : "1.0", //Optional e.g. '1.4.1'
+        appVersionCode : "1", //Optional e.g. '42'
+        appPackageName : "com.tech.openlms"  //Optional e.g. 'com.amazon.example'
+    };
+
+    var mobileAnalyticsClient = new AMA.Manager(options);
+
+    mobileAnalyticsClient.submitEvents();
+</script>
 
 </body>
 
