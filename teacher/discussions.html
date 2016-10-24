@@ -296,22 +296,26 @@
                         <p>{poll.question}</p>
                         <div className="radio">
                             <label><input type="radio" name="optradio"
-                                          onChange={this.setValue.bind(this, 'option_id', poll.options[0].option_id)}/>{poll.options[0].option}
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[0].option_id)}/>
+                                {poll.options[0].option+ "(votes: "+ poll.options[3].count+ ")"}
                             </label>
                         </div>
                         <div className="radio">
                             <label><input type="radio" name="optradio"
-                                          onChange={this.setValue.bind(this, 'option_id', poll.options[1].option_id)}/>{poll.options[1].option}
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[1].option_id)}/>
+                                {poll.options[1].option+ "(votes: "+ poll.options[1].count+ ")"}
                             </label>
                         </div>
                         <div className="radio">
                             <label><input type="radio" name="optradio"
-                                          onChange={this.setValue.bind(this, 'option_id', poll.options[2].option_id)}/>{poll.options[2].option}
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[2].option_id)}/>
+                                {poll.options[2].option+ "(votes: "+ poll.options[2].count+ ")"}
                             </label>
                         </div>
                         <div className="radio">
                             <label><input type="radio" name="optradio"
-                                          onChange={this.setValue.bind(this, 'option_id', poll.options[3].option_id)}/>{poll.options[3].option}
+                                          onChange={this.setValue.bind(this, 'option_id', poll.options[3].option_id)}/>
+                                {poll.options[3].option+ "(votes: "+ poll.options[3].count+ ")"}
                             </label>
                         </div>
                         <button className="btn-default btn submit-btn" onClick={this.submitPoll} id={"poll-"+poll.poll_id}>Submit</button>
