@@ -113,6 +113,8 @@
 
                 </div>
                 <!-- /.container-fluid -->
+
+                <a href="#" id="discussion-link">Discussions</a>
             </div>
 
             <div id="loading">
@@ -223,6 +225,7 @@
         success_container.hide();
         var cookie = read_cookie("user");
         var uosId = location.search.substr(1).split("=")[1];
+        $('#discussion-link').attr('href', "discussions.html?uos_id="+uos_id);
 
         $.get("http://52.34.207.176/api/show_uos?uosId=" + uosId + "&token=" + cookie["token"], function (data, status) {
             var uosDetail = data["data"][0];
