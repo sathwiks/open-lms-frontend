@@ -1,10 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
+
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Open UoS-Detail</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/sb-admin.css" rel="stylesheet">
+
+    <link href="../css/common-styles.css" rel="stylesheet">
+    <link href="../css/view_solutions.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
+
 <body>
-$END$
+
+<div id="wrapper">
+
+
+    <div w3-include-html="navigation.html"></div>
+
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <div id="content" class="">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Solutions - <span id="assignment-name-span"></span>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-check" aria-hidden="true"></i> Solutions
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div id="solutions-table" class="table-responsive">
+
+                </div>
+
+            </div>
+
+            <div id="loading" class="hide">
+                <img src="../images/loading.gif">
+            </div>
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<script>
+    w3IncludeHTML();
+</script>
+
+<script src="https://fb.me/react-0.14.6.js"></script>
+<script src="https://fb.me/react-dom-0.14.6.js"></script>
+<script src="http://fb.me/JSXTransformer-0.12.1.js"></script>
+
+<!-- jQuery -->
+<script src="../js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/moment.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-datetime-picker.js"></script>
+
+<script src="../js/cookie_mgmt.js"></script>
+<script src="../js/account_mgmt.js"></script>
+
+<script type="text/jsx">
+
+    var assignment_id = getParameterByName('assignment_id', window.location.href);
+
+    var solutions = [];
+    var solutionsRowReact;
+    var solutionsTableReact;
+
+    var SolutionRow = React.createClass({
+
+        getInitialState() {
+            return {
+                solution_id: this.props.solution.id,
+                marks: this.props.solution.marks,
+                student_id: this.props.solution.student_id,
+                marks_message: "",
+            }
+        },
+
+        setValue: function (field, event) {
+            var object = {};
+            object[field] = event.target.value;
+            const name = "save-btn-" + this.state.solution_id;
+            var save_btn = document.getElementById(name);
+            $(save_btn).prop('disabled', true);
+            if (event.target.value > this.props.solution.max_marks) {
+                object['marks_message'] = "can't be more than" + this.props.solution.max_marks;
+            } else if (event.target.value < 0) {
+                object['marks_message'] = "can't be negative";
+            } else {
+                $(save_btn).prop('disabled', false);
+                object['marks_message'] = "";
+            }
+            this.setState(object);
+        },
+
+        submitMarks: function () {
+            $('.save-btn').prop('disabled', true);
+            const url = "http://52.34.207.176/api/update_solution?token=" + user['token'];
+            const data = this.state;
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                dataType: "json",
+                success: function (response) {
+                    $('.save-btn').prop('disabled', false);
+                    this.setState({
+                        marks_message: "saved"
+                    })
+                }.bind(this),
+                error: function (xhr, errmsg, err) {
+                    console.log(xhr.status + ": " + xhr.responseText);
+                    var res = JSON.parse(xhr.responseText);
+                    $('.save-btn').prop('disabled', false);
+                    this.setState({
+                        marks_message: "error occurred"
+                    })
+                }.bind(this)
+            });
+        },
+
+        render: function () {
+            var solution = this.props.solution;
+            return (
+                    <tr>
+                        <td>
+                            <p className="strong">{solution.student_fname + " " + solution.student_lname}</p>
+                            <p>{solution.student_id}</p>
+                        </td>
+                        <td><a href={solution.resource_url}>{solution.name}</a></td>
+                        <td className="strong">{solution.max_marks}</td>
+                        <td>
+                            <div className="col-md-6 form-group">
+                                <input type="number" className="form-control"
+                                       id={"sol-" + solution.id + "-marks"}
+                                       placeholder="0"
+                                       min="0" max={solution.max_marks}
+                                       onChange={this.setValue.bind(this, 'marks')}
+                                       value={this.state.marks}/>
+                                <span className="help-block">{this.state.marks_message}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <button id={"save-btn-" + solution.id} className="btn btn-success save-btn"
+                                    onClick={this.submitMarks}>Save
+                            </button>
+                        </td>
+                    </tr>
+            );
+        }
+    });
+
+    var SolutionsTable = React.createClass({
+
+        getInitialState: function () {
+            return {
+                solutions: solutions,
+                name: "Hello"
+            }
+        },
+
+        updateSolutionsTable: function (solutions) {
+            this.setState({
+                solutions: solutions
+            });
+        },
+
+        render: function () {
+            var solution_items = this.state.solutions.map(function (solution) {
+                return <SolutionRow key={solution.id} solution={solution}/>
+            });
+            return (
+                    <div>
+                        <table className="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>Student Name &#38; Id</th>
+                                <th>Attachment</th>
+                                <th>Maximum Marks</th>
+                                <th>Received Marks</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {solution_items}
+                            </tbody>
+                        </table>
+                    </div>
+            );
+        }
+    });
+
+    $(document).ready(function () {
+        $('#username').html(getLoginName());
+        getSolutionsForAssignment();
+        solutionsTableReact = ReactDOM.render(<SolutionsTable/>, document.getElementById('solutions-table'));
+    });
+
+    function getSolutionsForAssignment() {
+        const url = "http://52.34.207.176/api/list_solution?token=" + user['token'] + "&assignment_id=" + assignment_id;
+        $.get(url, function (data, status) {
+            if (status == "success") {
+                solutions = data.data;
+                solutionsTableReact.updateSolutionsTable(solutions);
+                $('#assignment-name-span').html(solutions[0].assignment_name);
+            }
+        });
+    }
+</script>
+
+
 </body>
+
 </html>

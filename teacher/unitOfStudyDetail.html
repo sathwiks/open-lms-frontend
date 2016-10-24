@@ -330,6 +330,10 @@
 
     var AssignmentItem = React.createClass({
 
+        openViewSolutions: function (id) {
+            window.location = 'viewSolutions.html?assignment_id='+id;
+        },
+
         deleteAssignment: function (assignment) {
             selectedAssignment = assignment;
             $('#ass-name').html(assignment.name);
@@ -344,7 +348,9 @@
                         <p><span className="strong">Due:</span> {this.props.assignment.due_date}</p>
                         <p><span className="strong">Max Marks:</span> {this.props.assignment.max_marks}</p>
                         <p><a href={this.props.assignment.resource_url}>Attachment</a></p>
-                        <button className="btn btn-default">View Solutions</button>
+                        <button className="btn btn-default"
+                                onClick={this.openViewSolutions.bind(this, this.props.assignment.id)}>View Solutions
+                        </button>
                         <button className="btn btn-default btn-lg delete-btn"
                                 onClick={this.deleteAssignment.bind(this, this.props.assignment)}>
                             <i className="fa fa-times" aria-hidden="true"></i>
@@ -635,6 +641,11 @@
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
+
+    $(document).ready(function () {
+        $('#uos-link').addClass('active');
+        $('#username').html(getLoginName());
+    });
 
 </script>
 
